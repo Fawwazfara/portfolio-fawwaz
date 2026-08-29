@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fawwaz@devops:~$</title>
+    <meta name="description" content="Portfolio of Fawwaz Fadel Rahman, Cloud & DevOps Engineer.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo mono-text">fawwaz@devops:~$</a>
+            <div class="sys-health">
+                <span class="status-dot"></span> sys.healthy
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        
+        <!-- HERO / TERMINAL -->
+        <section id="hero" class="section hero-section">
+            
+            <!-- Hero Visuals: Cloud Drift & Orbit -->
+            <div class="hero-visuals">
+                
+                <!-- Cloud Background -->
+                <div class="cloud-layer cloud-layer-1">
+                    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor" d="M150,200 Q200,100 300,150 T500,100 T700,200 T850,150 L850,400 L-50,400 Z"></path>
+                    </svg>
+                </div>
+                <div class="cloud-layer cloud-layer-2">
+                    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor" d="M-50,250 Q100,150 250,280 T550,200 T750,250 L850,400 L-50,400 Z"></path>
+                    </svg>
+                </div>
+
+                <!-- Orbit System -->
+                <div class="orbit-system">
+                    
+                    <!-- Network Traffic Particles Container -->
+                    <div id="particles-container"></div>
+                    
+                    <div class="orbit-center">
+                        <span class="center-text mono-text">F</span>
+                        <span class="center-glow blinking-dot"></span>
+                    </div>
+                    
+                    <div class="orbit-ring ring-1">
+                        <div class="orbit-icon-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" class="orbit-icon" alt="Docker">
+                        </div>
+                    </div>
+                    
+                    <div class="orbit-ring ring-2">
+                        <div class="orbit-icon-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="orbit-icon" alt="AWS">
+                        </div>
+                        <div class="orbit-icon-wrapper opposite">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" class="orbit-icon" alt="Kubernetes">
+                        </div>
+                    </div>
+                    
+                    <div class="orbit-ring ring-3">
+                        <div class="orbit-icon-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" class="orbit-icon" alt="Linux">
+                        </div>
+                        <div class="orbit-icon-wrapper opposite">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg" class="orbit-icon" alt="Terraform">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Terminal Window -->
+            <div class="terminal-window boot-stagger">
+                <div class="term-header">
+                    <div class="term-buttons">
+                        <span class="term-btn close"></span>
+                        <span class="term-btn min"></span>
+                        <span class="term-btn max"></span>
+                    </div>
+                    <div class="term-title mono-text">bash - fawwaz</div>
+                </div>
+                <div class="term-body mono-text">
+                    <p class="command-line">
+                        <span class="prompt">guest@local:~$</span>
+                        <span class="typing-text" id="typewriter"></span><span class="cursor"></span>
+                    </p>
+                    
+                    <div class="term-output hidden" id="term-output">
+                        <!-- Glitch Text Effect -->
+                        <h1 class="display-name glitch-effect" data-text="Fawwaz Fadel Rahman">Fawwaz Fadel Rahman</h1>
+                        <h2 class="display-role">Cloud & DevOps Engineer</h2>
+                        <p class="display-desc">Building scalable, secure, and robust cloud infrastructure.</p>
+                        
+                        <div class="status-line">
+                            <span class="blinking-dot"></span> STATUS: <span class="success-text">available_for_work</span>
+                        </div>
+                        
+                        <div class="social-links mt-1">
+                            <a href="https://github.com/Fawwazfara" target="_blank">[ GitHub ]</a>
+                            <a href="https://www.linkedin.com/in/fawwaz-fadel-rahman-430360310/" target="_blank">[ LinkedIn ]</a>
+                            <a href="https://www.instagram.com/wwaz.py?igsi=MW9nbzcxbXBydm5wNw==" target="_blank">[ Instagram ]</a>
+                        </div>
+                        
+                        <p class="command-line mt-2">
+                            <span class="prompt">guest@local:~$</span> <span class="cursor-blink">_</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS / SERVICE STATUS DASHBOARD -->
+        <section id="skills" class="section boot-stagger delay-1">
+            <div class="section-header">
+                <h2 class="section-title">> Service Status Dashboard</h2>
+                <span class="mono-text subtitle">System Resources & Competencies</span>
+            </div>
+            
+            <div class="dashboard-grid">
+                
+                <div class="service-card hover-glow">
+                    <div class="svc-header">
+                        <h3 class="svc-name mono-text">srv_cloud_infra</h3>
+                        <!-- Progress Bar Hook -->
+                        <span class="svc-status online progress-boot" data-final="UPTIME: 100%">[PENDING...]</span>
+                    </div>
+                    <div class="svc-body">
+                        <span class="tag">AWS</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">Networking</span>
+                    </div>
+                </div>
+
+                <div class="service-card hover-glow">
+                    <div class="svc-header">
+                        <h3 class="svc-name mono-text">srv_container</h3>
+                        <span class="svc-status online progress-boot" data-final="RUNNING">[PENDING...]</span>
+                    </div>
+                    <div class="svc-body">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                    </div>
+                </div>
+
+                <div class="service-card hover-glow">
+                    <div class="svc-header">
+                        <h3 class="svc-name mono-text">srv_cicd_automation</h3>
+                        <span class="svc-status online progress-boot" data-final="HEALTHY">[PENDING...]</span>
+                    </div>
+                    <div class="svc-body">
+                        <span class="tag">GitHub Actions</span>
+                        <span class="tag">Jenkins</span>
+                        <span class="tag">Ansible</span>
+                        <span class="tag">Terraform</span>
+                    </div>
+                </div>
+
+                <div class="service-card hover-glow">
+                    <div class="svc-header">
+                        <h3 class="svc-name mono-text">srv_scripting</h3>
+                        <span class="svc-status online progress-boot" data-final="ACTIVE">[PENDING...]</span>
+                    </div>
+                    <div class="svc-body">
+                        <span class="tag">Bash</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Git</span>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- EXPERIENCE / GIT COMMIT LOG -->
+        <section id="experience" class="section boot-stagger delay-2">
+            <div class="section-header">
+                <h2 class="section-title">> Git Commit Log</h2>
+                <span class="mono-text subtitle">git log --oneline --graph</span>
+            </div>
+
+            <!-- Changed to have dynamic drawn line -->
+            <div class="git-timeline" id="git-timeline">
+                <div class="timeline-line"></div>
+                
+                <!-- Commit 1 -->
+                <div class="commit-entry hover-glow">
+                    <div class="commit-node"></div>
+                    <div class="commit-content">
+                        <div class="commit-meta mono-text">
+                            <span class="commit-hash warning-text">commit 8f3a9b2</span>
+                            <span class="commit-date">Juni 2026 - Present</span>
+                        </div>
+                        <h3 class="commit-msg">feat: AWS re/Start Program</h3>
+                        <p class="commit-desc">Pelatihan intensif cloud computing mencakup Linux, Python, networking, security, relational databases, dan AWS core services.</p>
+                    </div>
+                </div>
+
+                <!-- Commit 2 -->
+                <div class="commit-entry hover-glow">
+                    <div class="commit-node"></div>
+                    <div class="commit-content">
+                        <div class="commit-meta mono-text">
+                            <span class="commit-hash warning-text">commit 4c7d1e8</span>
+                            <span class="commit-date">Tahun 2025</span>
+                        </div>
+                        <h3 class="commit-msg">fix: Teknisi Komputer dan Printer (Internship)</h3>
+                        <p class="commit-desc">Melakukan pemeliharaan, perbaikan, dan troubleshooting perangkat keras serta jaringan dasar.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROJECTS & CERTS / DEPLOYMENT LOGS -->
+        <section id="projects" class="section boot-stagger delay-3">
+            <div class="section-header">
+                <h2 class="section-title">> Deployment Logs & Artifacts</h2>
+                <span class="mono-text subtitle">Recent deployments and valid certificates</span>
+            </div>
+
+            <div class="logs-grid">
+                
+                <!-- Project -->
+                <div class="log-card hover-glow">
+                    <div class="log-header mono-text">
+                        <span class="log-type">[DEPLOYMENT]</span>
+                        <span class="log-status success-bg">SUCCESS</span>
+                    </div>
+                    <h3 class="log-title">Infak Management System</h3>
+                    <p class="log-desc">Web app pencatatan & manajemen infak untuk transparansi operasional Masjid/Madrasah Assajjad.</p>
+                    <div class="log-tags mono-text">
+                        <span>#web-app</span>
+                        <span>#management</span>
+                    </div>
+                </div>
+
+                <!-- Certification -->
+                <div class="log-card hover-glow">
+                    <div class="log-header mono-text">
+                        <span class="log-type">[CERTIFICATE]</span>
+                        <span class="log-status warning-bg">VERIFIED</span>
+                    </div>
+                    <h3 class="log-title">AWS Certified Cloud Practitioner</h3>
+                    <p class="log-desc">Sertifikasi resmi dari Amazon Web Services untuk pemahaman arsitektur dan layanan AWS Cloud.</p>
+                    <div class="log-tags mono-text mt-2">
+                        <a href="AWS Certified Cloud Practitioner certificate (1).pdf" target="_blank" class="cert-link">./view_certificate.sh</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mono-text text-center mt-4 mb-2">
+        <p class="muted-text">EOF. Connection closed by foreign host.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
