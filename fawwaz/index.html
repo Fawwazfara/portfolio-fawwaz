@@ -1,272 +1,690 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fawwaz@devops:~$</title>
-    <meta name="description" content="Portfolio of Fawwaz Fadel Rahman, Cloud & DevOps Engineer.">
-    
-    <!-- Google Fonts -->
+    <title>Fawwaz Fadel Rahman — Cloud & DevOps Engineer</title>
+    <meta name="description" content="Portfolio of Fawwaz Fadel Rahman — Cloud & DevOps Engineer with Web Development capabilities. AWS Certified Cloud Practitioner.">
+    <meta name="theme-color" content="#090D16">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23090D16'/%3E%3Cpath d='M9 11l6 5-6 5M17 21h6' stroke='%2322C55E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+
+    <!-- Prevent theme flash on initial load -->
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('fawwaz-theme');
+                var theme = saved === 'light' || saved === 'dark' ? saved : 'dark';
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link" data-i18n="skip">Lewati ke konten utama</a>
 
-    <nav class="navbar">
+    <!-- TOP NAVIGATION -->
+    <header class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo mono-text">fawwaz@devops:~$</a>
-            <div class="sys-health">
-                <span class="status-dot"></span> sys.healthy
+            <a href="#hero" class="brand" aria-label="Fawwaz Fadel Rahman Home">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="4 17 10 11 4 5"></polyline>
+                        <line x1="12" y1="19" x2="20" y2="19"></line>
+                    </svg>
+                </span>
+                <span class="brand-text mono">fawwaz<span class="brand-accent">.sh</span></span>
+            </a>
+
+            <nav class="nav-links" aria-label="Navigasi utama">
+                <a href="#hero" class="nav-link" data-i18n="nav.about">Profil</a>
+                <a href="#stack" class="nav-link" data-i18n="nav.stack">Kompetensi</a>
+                <a href="#experience" class="nav-link" data-i18n="nav.experience">Pengalaman</a>
+                <a href="#projects" class="nav-link" data-i18n="nav.projects">Proyek & Sertifikasi</a>
+                <a href="#contact" class="nav-link" data-i18n="nav.contact">Kontak</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="lang-switch" role="group" aria-label="Pilih bahasa">
+                    <button type="button" class="lang-btn active" data-lang="id" aria-pressed="true">ID</button>
+                    <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+                </div>
+
+                <button type="button" class="icon-btn" id="theme-toggle" aria-label="Ubah tema tampilan" title="Toggle theme">
+                    <span class="icon-swap-grid" aria-hidden="true">
+                        <svg class="icon-swap-layer icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                        </svg>
+                        <svg class="icon-swap-layer icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                        </svg>
+                    </span>
+                </button>
+
+                <button type="button" class="icon-btn mobile-menu-btn" id="mobile-menu-toggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-drawer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="4" y1="7" x2="20" y2="7"></line>
+                        <line x1="4" y1="12" x2="20" y2="12"></line>
+                        <line x1="4" y1="17" x2="20" y2="17"></line>
+                    </svg>
+                </button>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <main class="container">
-        
-        <!-- HERO / TERMINAL -->
-        <section id="hero" class="section hero-section">
-            
-            <!-- Hero Visuals: Cloud Drift & Orbit -->
-            <div class="hero-visuals">
-                
-                <!-- Cloud Background -->
-                <div class="cloud-layer cloud-layer-1">
-                    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="currentColor" d="M150,200 Q200,100 300,150 T500,100 T700,200 T850,150 L850,400 L-50,400 Z"></path>
-                    </svg>
-                </div>
-                <div class="cloud-layer cloud-layer-2">
-                    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="currentColor" d="M-50,250 Q100,150 250,280 T550,200 T750,250 L850,400 L-50,400 Z"></path>
-                    </svg>
-                </div>
-
-                <!-- Orbit System -->
-                <div class="orbit-system">
-                    
-                    <!-- Network Traffic Particles Container -->
-                    <div id="particles-container"></div>
-                    
-                    <div class="orbit-center">
-                        <span class="center-text mono-text">F</span>
-                        <span class="center-glow blinking-dot"></span>
-                    </div>
-                    
-                    <div class="orbit-ring ring-1">
-                        <div class="orbit-icon-wrapper">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" class="orbit-icon" alt="Docker">
-                        </div>
-                    </div>
-                    
-                    <div class="orbit-ring ring-2">
-                        <div class="orbit-icon-wrapper">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="orbit-icon" alt="AWS">
-                        </div>
-                        <div class="orbit-icon-wrapper opposite">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" class="orbit-icon" alt="Kubernetes">
-                        </div>
-                    </div>
-                    
-                    <div class="orbit-ring ring-3">
-                        <div class="orbit-icon-wrapper">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" class="orbit-icon" alt="Linux">
-                        </div>
-                        <div class="orbit-icon-wrapper opposite">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg" class="orbit-icon" alt="Terraform">
-                        </div>
-                    </div>
-                </div>
-
+    <!-- MOBILE NAVIGATION DRAWER -->
+    <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+    <aside class="mobile-drawer" id="mobile-drawer" aria-label="Menu mobile" aria-hidden="true">
+        <div class="drawer-header">
+            <span class="mono brand-text">fawwaz<span class="brand-accent">.sh</span></span>
+            <button type="button" class="icon-btn" id="mobile-menu-close" aria-label="Tutup menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <nav class="drawer-nav">
+            <a href="#hero" class="drawer-link" data-i18n="nav.about">Profil</a>
+            <a href="#stack" class="drawer-link" data-i18n="nav.stack">Kompetensi</a>
+            <a href="#experience" class="drawer-link" data-i18n="nav.experience">Pengalaman</a>
+            <a href="#projects" class="drawer-link" data-i18n="nav.projects">Proyek & Sertifikasi</a>
+            <a href="#contact" class="drawer-link" data-i18n="nav.contact">Kontak</a>
+        </nav>
+        <div class="drawer-footer">
+            <div class="status-pill">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span class="mono" data-i18n="status.available">Available for work</span>
             </div>
+        </div>
+    </aside>
 
-            <!-- Terminal Window -->
-            <div class="terminal-window boot-stagger">
-                <div class="term-header">
-                    <div class="term-buttons">
-                        <span class="term-btn close"></span>
-                        <span class="term-btn min"></span>
-                        <span class="term-btn max"></span>
+    <main id="main-content" class="container">
+
+        <!-- HERO BENTO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="hero-grid">
+                <!-- Left Column: Narrative & Primary Actions -->
+                <div class="hero-content">
+                    <div class="stagger-item">
+                        <div class="status-pill">
+                            <span class="status-dot" aria-hidden="true"></span>
+                            <span class="mono" data-i18n="hero.badge">DevOps &amp; Cloud Engineer · Web Dev Fluent</span>
+                        </div>
                     </div>
-                    <div class="term-title mono-text">bash - fawwaz</div>
-                </div>
-                <div class="term-body mono-text">
-                    <p class="command-line">
-                        <span class="prompt">guest@local:~$</span>
-                        <span class="typing-text" id="typewriter"></span><span class="cursor"></span>
-                    </p>
-                    
-                    <div class="term-output hidden" id="term-output">
-                        <!-- Glitch Text Effect -->
-                        <h1 class="display-name glitch-effect" data-text="Fawwaz Fadel Rahman">Fawwaz Fadel Rahman</h1>
-                        <h2 class="display-role">Cloud & DevOps Engineer</h2>
-                        <p class="display-desc">Building scalable, secure, and robust cloud infrastructure.</p>
-                        
-                        <div class="status-line">
-                            <span class="blinking-dot"></span> STATUS: <span class="success-text">available_for_work</span>
-                        </div>
-                        
-                        <div class="social-links mt-1">
-                            <a href="https://github.com/Fawwazfara" target="_blank">[ GitHub ]</a>
-                            <a href="https://www.linkedin.com/in/fawwaz-fadel-rahman-430360310/" target="_blank">[ LinkedIn ]</a>
-                            <a href="https://www.instagram.com/wwaz.py?igsi=MW9nbzcxbXBydm5wNw==" target="_blank">[ Instagram ]</a>
-                        </div>
-                        
-                        <p class="command-line mt-2">
-                            <span class="prompt">guest@local:~$</span> <span class="cursor-blink">_</span>
+
+                    <div class="stagger-item">
+                        <h1 class="hero-title">
+                            <span data-i18n="hero.greeting">Halo, saya</span>
+                            <span class="hero-name">Fawwaz Fadel Rahman.</span>
+                        </h1>
+                        <p class="hero-subtitle" data-i18n="hero.headline">
+                            Membangun infrastruktur cloud yang skalabel, aman, dan otomatis — dengan pemahaman web development yang utuh.
                         </p>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- SKILLS / SERVICE STATUS DASHBOARD -->
-        <section id="skills" class="section boot-stagger delay-1">
-            <div class="section-header">
-                <h2 class="section-title">> Service Status Dashboard</h2>
-                <span class="mono-text subtitle">System Resources & Competencies</span>
-            </div>
-            
-            <div class="dashboard-grid">
-                
-                <div class="service-card hover-glow">
-                    <div class="svc-header">
-                        <h3 class="svc-name mono-text">srv_cloud_infra</h3>
-                        <!-- Progress Bar Hook -->
-                        <span class="svc-status online progress-boot" data-final="UPTIME: 100%">[PENDING...]</span>
-                    </div>
-                    <div class="svc-body">
-                        <span class="tag">AWS</span>
-                        <span class="tag">Linux</span>
-                        <span class="tag">Networking</span>
-                    </div>
-                </div>
+                    <p class="hero-desc stagger-item" data-i18n="hero.desc">
+                        Saya berfokus pada operasional Cloud &amp; DevOps (AWS, Docker, Kubernetes, Terraform, CI/CD) sekaligus memahami alur pengembangan aplikasi web dari sisi kode hingga deployment ke produksi.
+                    </p>
 
-                <div class="service-card hover-glow">
-                    <div class="svc-header">
-                        <h3 class="svc-name mono-text">srv_container</h3>
-                        <span class="svc-status online progress-boot" data-final="RUNNING">[PENDING...]</span>
+                    <div class="hero-actions stagger-item">
+                        <a href="#projects" class="btn btn-primary btn-trailing-icon">
+                            <span data-i18n="hero.ctaPrimary">Lihat Proyek &amp; Sertifikasi</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/Fawwazfara" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-leading-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/fawwaz-fadel-rahman-430360310/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-leading-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect width="4" height="12" x="2" y="9"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
                     </div>
-                    <div class="svc-body">
-                        <span class="tag">Docker</span>
-                        <span class="tag">Kubernetes</span>
-                    </div>
-                </div>
 
-                <div class="service-card hover-glow">
-                    <div class="svc-header">
-                        <h3 class="svc-name mono-text">srv_cicd_automation</h3>
-                        <span class="svc-status online progress-boot" data-final="HEALTHY">[PENDING...]</span>
-                    </div>
-                    <div class="svc-body">
-                        <span class="tag">GitHub Actions</span>
-                        <span class="tag">Jenkins</span>
-                        <span class="tag">Ansible</span>
-                        <span class="tag">Terraform</span>
-                    </div>
-                </div>
-
-                <div class="service-card hover-glow">
-                    <div class="svc-header">
-                        <h3 class="svc-name mono-text">srv_scripting</h3>
-                        <span class="svc-status online progress-boot" data-final="ACTIVE">[PENDING...]</span>
-                    </div>
-                    <div class="svc-body">
-                        <span class="tag">Bash</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">Git</span>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-
-        <!-- EXPERIENCE / GIT COMMIT LOG -->
-        <section id="experience" class="section boot-stagger delay-2">
-            <div class="section-header">
-                <h2 class="section-title">> Git Commit Log</h2>
-                <span class="mono-text subtitle">git log --oneline --graph</span>
-            </div>
-
-            <!-- Changed to have dynamic drawn line -->
-            <div class="git-timeline" id="git-timeline">
-                <div class="timeline-line"></div>
-                
-                <!-- Commit 1 -->
-                <div class="commit-entry hover-glow">
-                    <div class="commit-node"></div>
-                    <div class="commit-content">
-                        <div class="commit-meta mono-text">
-                            <span class="commit-hash warning-text">commit 8f3a9b2</span>
-                            <span class="commit-date">Juni 2026 - Present</span>
+                    <!-- Quick Metrics Strip -->
+                    <div class="hero-metrics stagger-item">
+                        <div class="metric-item">
+                            <span class="metric-label mono" data-i18n="metric.focusLabel">Fokus Utama</span>
+                            <span class="metric-value" data-i18n="metric.focusVal">Cloud &amp; DevOps</span>
                         </div>
-                        <h3 class="commit-msg">feat: AWS re/Start Program</h3>
-                        <p class="commit-desc">Pelatihan intensif cloud computing mencakup Linux, Python, networking, security, relational databases, dan AWS core services.</p>
-                    </div>
-                </div>
-
-                <!-- Commit 2 -->
-                <div class="commit-entry hover-glow">
-                    <div class="commit-node"></div>
-                    <div class="commit-content">
-                        <div class="commit-meta mono-text">
-                            <span class="commit-hash warning-text">commit 4c7d1e8</span>
-                            <span class="commit-date">Tahun 2025</span>
+                        <div class="metric-divider" aria-hidden="true"></div>
+                        <div class="metric-item">
+                            <span class="metric-label mono" data-i18n="metric.bridgeLabel">Nilai Tambah</span>
+                            <span class="metric-value" data-i18n="metric.bridgeVal">Web Development</span>
                         </div>
-                        <h3 class="commit-msg">fix: Teknisi Komputer dan Printer (Internship)</h3>
-                        <p class="commit-desc">Melakukan pemeliharaan, perbaikan, dan troubleshooting perangkat keras serta jaringan dasar.</p>
+                        <div class="metric-divider" aria-hidden="true"></div>
+                        <div class="metric-item">
+                            <span class="metric-label mono" data-i18n="metric.certLabel">Sertifikasi</span>
+                            <span class="metric-value">AWS CCP (2026–2029)</span>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Right Column: Bento Portrait + Identity Tiles -->
+                <div class="hero-bento stagger-item">
+                    <!-- Concentric Portrait Card -->
+                    <figure class="surface-card portrait-card">
+                        <div class="portrait-frame">
+                            <img
+                                src="images/fawwaz.jpg"
+                                alt="Foto Fawwaz Fadel Rahman, Cloud dan DevOps Engineer"
+                                class="portrait-img"
+                                width="640"
+                                height="760"
+                                decoding="async"
+                            >
+                            <div class="portrait-caption">
+                                <span class="mono caption-tag">fawwaz@cloud</span>
+                                <span class="caption-badge">
+                                    <span class="status-dot" aria-hidden="true"></span>
+                                    <span data-i18n="portrait.status">Siap Kolaborasi</span>
+                                </span>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Two Mini Bento Cards -->
+                    <div class="hero-mini-grid">
+                        <a href="#certificate" class="surface-card mini-card mini-card-interactive">
+                            <div class="mini-card-top">
+                                <span class="mini-icon mini-icon-amber" aria-hidden="true">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                        <path d="m9 12 2 2 4-4"></path>
+                                    </svg>
+                                </span>
+                                <span class="mono mini-kicker">AWS CERTIFIED</span>
+                            </div>
+                            <p class="mini-title">Cloud Practitioner</p>
+                            <p class="mini-sub mono">ID: 7ebc4ecc...bc2b</p>
+                        </a>
+
+                        <a href="#stack" class="surface-card mini-card mini-card-interactive">
+                            <div class="mini-card-top">
+                                <span class="mini-icon mini-icon-cyan" aria-hidden="true">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="16 18 22 12 16 6"></polyline>
+                                        <polyline points="8 6 2 12 8 18"></polyline>
+                                    </svg>
+                                </span>
+                                <span class="mono mini-kicker" data-i18n="mini.bridgeKicker">DUAL SKILLSET</span>
+                            </div>
+                            <p class="mini-title" data-i18n="mini.bridgeTitle">Infra + Web Dev</p>
+                            <p class="mini-sub" data-i18n="mini.bridgeSub">Code to Production</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive CLI Console -->
+            <div class="surface-card cli-panel" aria-label="Terminal profil interaktif">
+                <div class="cli-header">
+                    <div class="cli-dots" aria-hidden="true">
+                        <span class="cli-dot dot-red"></span>
+                        <span class="cli-dot dot-amber"></span>
+                        <span class="cli-dot dot-green"></span>
+                    </div>
+                    <span class="cli-title mono">bash — fawwaz@devops:~</span>
+                    <div class="cli-presets" role="group" aria-label="Perintah cepat terminal">
+                        <button type="button" class="cli-preset active" data-cmd="whoami" aria-pressed="true">whoami</button>
+                        <button type="button" class="cli-preset" data-cmd="stack" aria-pressed="false">stack --all</button>
+                        <button type="button" class="cli-preset" data-cmd="aws-cert" aria-pressed="false">aws --verify</button>
+                        <button type="button" class="cli-preset" data-cmd="projects" aria-pressed="false">ls ./projects</button>
+                    </div>
+                </div>
+                <div class="cli-body mono">
+                    <div class="cli-output" id="cli-output" aria-live="polite"></div>
+                    <form class="cli-input-row" id="cli-form">
+                        <label for="cli-input" class="sr-only" data-i18n="cli.label">Masukkan perintah terminal</label>
+                        <span class="cli-prompt" aria-hidden="true">guest@fawwaz:~$</span>
+                        <input
+                            id="cli-input"
+                            type="text"
+                            class="cli-input mono"
+                            autocomplete="off"
+                            spellcheck="false"
+                            placeholder="Ketik 'help', 'whoami', 'stack', 'cert', atau klik preset di atas..."
+                            data-i18n-placeholder="cli.placeholder"
+                        >
+                    </form>
+                </div>
             </div>
         </section>
 
-        <!-- PROJECTS & CERTS / DEPLOYMENT LOGS -->
-        <section id="projects" class="section boot-stagger delay-3">
+        <!-- COMPETENCIES BENTO SECTION -->
+        <section id="stack" class="section reveal-section">
             <div class="section-header">
-                <h2 class="section-title">> Deployment Logs & Artifacts</h2>
-                <span class="mono-text subtitle">Recent deployments and valid certificates</span>
+                <div class="section-eyebrow mono">
+                    <span class="eyebrow-index">01</span>
+                    <span data-i18n="stack.eyebrow">SYSTEM CAPABILITIES</span>
+                </div>
+                <h2 class="section-title" data-i18n="stack.title">Kompetensi DevOps &amp; Web Development</h2>
+                <p class="section-subtitle" data-i18n="stack.subtitle">
+                    Kombinasi engineering infrastruktur cloud, otomasi pipeline, serta pemahaman fundamental pengembangan web modern.
+                </p>
             </div>
 
-            <div class="logs-grid">
-                
-                <!-- Project -->
-                <div class="log-card hover-glow">
-                    <div class="log-header mono-text">
-                        <span class="log-type">[DEPLOYMENT]</span>
-                        <span class="log-status success-bg">SUCCESS</span>
+            <div class="bento-stack-grid">
+                <!-- Card 1: Cloud & Infrastructure -->
+                <article class="surface-card stack-card">
+                    <div class="stack-card-head">
+                        <span class="stack-icon-box accent-green" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                            </svg>
+                        </span>
+                        <span class="mono stack-code">srv_cloud_infra</span>
                     </div>
-                    <h3 class="log-title">Infak Management System</h3>
-                    <p class="log-desc">Web app pencatatan & manajemen infak untuk transparansi operasional Masjid/Madrasah Assajjad.</p>
-                    <div class="log-tags mono-text">
-                        <span>#web-app</span>
-                        <span>#management</span>
-                    </div>
-                </div>
+                    <h3 class="stack-title" data-i18n="stack.c1Title">Cloud &amp; Infrastruktur</h3>
+                    <p class="stack-desc" data-i18n="stack.c1Desc">
+                        Arsitektur layanan inti AWS, administrasi sistem Linux, konfigurasi jaringan, dan keamanan infrastruktur dasar.
+                    </p>
+                    <ul class="tag-list">
+                        <li class="tech-tag">AWS</li>
+                        <li class="tech-tag">Linux</li>
+                        <li class="tech-tag">Networking</li>
+                        <li class="tech-tag">Cloud Security</li>
+                    </ul>
+                </article>
 
-                <!-- Certification -->
-                <div class="log-card hover-glow">
-                    <div class="log-header mono-text">
-                        <span class="log-type">[CERTIFICATE]</span>
-                        <span class="log-status warning-bg">VERIFIED</span>
+                <!-- Card 2: Containers & Orchestration -->
+                <article class="surface-card stack-card">
+                    <div class="stack-card-head">
+                        <span class="stack-icon-box accent-cyan" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path>
+                                <path d="m3.3 7 8.7 5 8.7-5"></path>
+                                <path d="M12 22V12"></path>
+                            </svg>
+                        </span>
+                        <span class="mono stack-code">srv_containers</span>
                     </div>
-                    <h3 class="log-title">AWS Certified Cloud Practitioner</h3>
-                    <p class="log-desc">Sertifikasi resmi dari Amazon Web Services untuk pemahaman arsitektur dan layanan AWS Cloud.</p>
-                    <div class="log-tags mono-text mt-2">
-                        <a href="AWS Certified Cloud Practitioner certificate (1).pdf" target="_blank" class="cert-link">./view_certificate.sh</a>
-                    </div>
-                </div>
+                    <h3 class="stack-title" data-i18n="stack.c2Title">Container &amp; Orkestrasi</h3>
+                    <p class="stack-desc" data-i18n="stack.c2Desc">
+                        Mengemas aplikasi agar konsisten di tiap environment dan mengelola deployment berbasis container.
+                    </p>
+                    <ul class="tag-list">
+                        <li class="tech-tag">Docker</li>
+                        <li class="tech-tag">Kubernetes</li>
+                        <li class="tech-tag">Containerization</li>
+                    </ul>
+                </article>
 
+                <!-- Card 3: CI/CD & IaC Automation -->
+                <article class="surface-card stack-card">
+                    <div class="stack-card-head">
+                        <span class="stack-icon-box accent-amber" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z"></path>
+                            </svg>
+                        </span>
+                        <span class="mono stack-code">srv_cicd_iac</span>
+                    </div>
+                    <h3 class="stack-title" data-i18n="stack.c3Title">CI/CD &amp; Infrastructure as Code</h3>
+                    <p class="stack-desc" data-i18n="stack.c3Desc">
+                        Otomatisasi build, testing, provisioning server, dan deployment pipeline agar rilis lebih cepat dan repeatable.
+                    </p>
+                    <ul class="tag-list">
+                        <li class="tech-tag">GitHub Actions</li>
+                        <li class="tech-tag">Jenkins</li>
+                        <li class="tech-tag">Terraform</li>
+                        <li class="tech-tag">Ansible</li>
+                    </ul>
+                </article>
+
+                <!-- Card 4: Scripting & Databases -->
+                <article class="surface-card stack-card">
+                    <div class="stack-card-head">
+                        <span class="stack-icon-box accent-green" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="4 17 10 11 4 5"></polyline>
+                                <line x1="12" y1="19" x2="20" y2="19"></line>
+                            </svg>
+                        </span>
+                        <span class="mono stack-code">srv_scripting</span>
+                    </div>
+                    <h3 class="stack-title" data-i18n="stack.c4Title">Scripting &amp; Data</h3>
+                    <p class="stack-desc" data-i18n="stack.c4Desc">
+                        Menulis skrip otomasi tugas sistem harian, integrasi CLI, version control, dan dasar relational database.
+                    </p>
+                    <ul class="tag-list">
+                        <li class="tech-tag">Bash</li>
+                        <li class="tech-tag">Python</li>
+                        <li class="tech-tag">Git</li>
+                        <li class="tech-tag">Relational DB</li>
+                    </ul>
+                </article>
+
+                <!-- Card 5: Wide Card — Web Development Bridge -->
+                <article class="surface-card stack-card stack-card-wide">
+                    <div class="stack-wide-inner">
+                        <div class="stack-wide-text">
+                            <div class="stack-card-head">
+                                <span class="stack-icon-box accent-cyan" aria-hidden="true">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="18" height="14" x="3" y="4" rx="2"></rect>
+                                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                                        <line x1="12" y1="18" x2="12" y2="21"></line>
+                                    </svg>
+                                </span>
+                                <span class="mono stack-code">srv_web_dev</span>
+                            </div>
+                            <h3 class="stack-title" data-i18n="stack.c5Title">Web Development &amp; Application Delivery</h3>
+                            <p class="stack-desc" data-i18n="stack.c5Desc">
+                                Tidak hanya mengelola server dan pipeline — saya juga membangun antarmuka web modern dan memahami bagaimana aplikasi front-end maupun back-end berinteraksi dengan infrastruktur produksi.
+                            </p>
+                        </div>
+                        <ul class="tag-list tag-list-wide">
+                            <li class="tech-tag">HTML5 &amp; Semantic UI</li>
+                            <li class="tech-tag">CSS3 / Responsive Layout</li>
+                            <li class="tech-tag">JavaScript</li>
+                            <li class="tech-tag">Web App Deployment</li>
+                            <li class="tech-tag">Troubleshooting</li>
+                        </ul>
+                    </div>
+                </article>
             </div>
         </section>
 
+        <!-- EXPERIENCE TIMELINE SECTION -->
+        <section id="experience" class="section reveal-section">
+            <div class="section-header">
+                <div class="section-eyebrow mono">
+                    <span class="eyebrow-index">02</span>
+                    <span data-i18n="exp.eyebrow">GIT LOG --GRAPH</span>
+                </div>
+                <h2 class="section-title" data-i18n="exp.title">Pengalaman &amp; Pelatihan</h2>
+                <p class="section-subtitle" data-i18n="exp.subtitle">
+                    Perjalanan teknis dari fondasi perangkat keras hingga cloud engineering dan otomasi DevOps.
+                </p>
+            </div>
+
+            <div class="timeline-list">
+                <!-- Entry 1 -->
+                <article class="timeline-item">
+                    <div class="timeline-rail" aria-hidden="true">
+                        <span class="timeline-node node-active"></span>
+                        <span class="timeline-stem"></span>
+                    </div>
+                    <div class="surface-card timeline-card">
+                        <div class="timeline-meta mono">
+                            <span class="commit-badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <line x1="3" y1="12" x2="9" y2="12"></line>
+                                    <line x1="15" y1="12" x2="21" y2="12"></line>
+                                </svg>
+                                8f3a9b2
+                            </span>
+                            <span class="branch-badge">HEAD -&gt; main</span>
+                            <time class="timeline-date" data-i18n="exp.e1Date">Juni 2026 – Sekarang</time>
+                        </div>
+                        <h3 class="timeline-title">AWS re/Start Program</h3>
+                        <p class="timeline-role mono" data-i18n="exp.e1Role">Cloud Computing Intensive Training</p>
+                        <p class="timeline-desc" data-i18n="exp.e1Desc">
+                            Pelatihan intensif cloud computing mencakup administrasi Linux, pemrograman Python, networking, cloud security, relational databases, serta layanan inti AWS untuk kesiapan operasional cloud.
+                        </p>
+                        <ul class="tag-list">
+                            <li class="tech-tag">AWS Core Services</li>
+                            <li class="tech-tag">Linux</li>
+                            <li class="tech-tag">Python</li>
+                            <li class="tech-tag">Networking &amp; Security</li>
+                            <li class="tech-tag">Relational DB</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Entry 2 -->
+                <article class="timeline-item">
+                    <div class="timeline-rail" aria-hidden="true">
+                        <span class="timeline-node"></span>
+                    </div>
+                    <div class="surface-card timeline-card">
+                        <div class="timeline-meta mono">
+                            <span class="commit-badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <line x1="3" y1="12" x2="9" y2="12"></line>
+                                    <line x1="15" y1="12" x2="21" y2="12"></line>
+                                </svg>
+                                4c7d1e8
+                            </span>
+                            <span class="branch-badge branch-muted">internship</span>
+                            <time class="timeline-date" data-i18n="exp.e2Date">Tahun 2025</time>
+                        </div>
+                        <h3 class="timeline-title" data-i18n="exp.e2Title">Teknisi Komputer dan Printer (Internship)</h3>
+                        <p class="timeline-role mono" data-i18n="exp.e2Role">Hardware &amp; Network Support</p>
+                        <p class="timeline-desc" data-i18n="exp.e2Desc">
+                            Melakukan pemeliharaan, perbaikan perangkat keras komputer dan printer, serta troubleshooting jaringan dasar secara langsung di lingkungan operasional.
+                        </p>
+                        <ul class="tag-list">
+                            <li class="tech-tag">Hardware Troubleshooting</li>
+                            <li class="tech-tag">Maintenance</li>
+                            <li class="tech-tag">Basic Networking</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- PROJECTS & CERTIFICATIONS SECTION -->
+        <section id="projects" class="section reveal-section">
+            <div class="section-header">
+                <div class="section-eyebrow mono">
+                    <span class="eyebrow-index">03</span>
+                    <span data-i18n="proj.eyebrow">DEPLOYMENTS &amp; CREDENTIALS</span>
+                </div>
+                <h2 class="section-title" data-i18n="proj.title">Proyek Pilihan &amp; Sertifikasi</h2>
+                <p class="section-subtitle" data-i18n="proj.subtitle">
+                    Implementasi aplikasi web nyata yang mendukung transparansi operasional serta sertifikasi cloud terverifikasi.
+                </p>
+            </div>
+
+            <div class="showcase-grid">
+                <!-- Featured Web Project -->
+                <article class="surface-card project-card">
+                    <div class="card-top-meta">
+                        <span class="badge-pill badge-green mono">
+                            <span class="status-dot" aria-hidden="true"></span>
+                            DEPLOYMENT · LIVE CONCEPT
+                        </span>
+                        <span class="mono muted-code">v1.0</span>
+                    </div>
+
+                    <div class="project-preview-strip" aria-hidden="true">
+                        <div class="preview-bar">
+                            <span></span><span></span><span></span>
+                            <small class="mono">assajjad-infak.app</small>
+                        </div>
+                        <div class="preview-metrics">
+                            <div class="preview-stat">
+                                <span class="mono">MODULE</span>
+                                <strong>Pencatatan Infak</strong>
+                            </div>
+                            <div class="preview-stat">
+                                <span class="mono">PURPOSE</span>
+                                <strong>Transparansi Dana</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="showcase-title">Infak Management System</h3>
+                    <p class="showcase-desc" data-i18n="proj.infakDesc">
+                        Aplikasi web pencatatan dan manajemen infak untuk mendukung transparansi laporan keuangan serta operasional Masjid/Madrasah Assajjad.
+                    </p>
+
+                    <ul class="tag-list">
+                        <li class="tech-tag">Web App</li>
+                        <li class="tech-tag">Management System</li>
+                        <li class="tech-tag">Operational Transparency</li>
+                    </ul>
+                </article>
+
+                <!-- Verified AWS Certificate -->
+                <article id="certificate" class="surface-card cert-card">
+                    <div class="card-top-meta">
+                        <span class="badge-pill badge-amber mono">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="m9 12 2 2 4-4"></path>
+                            </svg>
+                            VERIFIED CREDENTIAL
+                        </span>
+                        <span class="mono muted-code">AWS-CLF</span>
+                    </div>
+
+                    <h3 class="showcase-title">AWS Certified Cloud Practitioner</h3>
+                    <p class="showcase-desc" data-i18n="cert.desc">
+                        Sertifikasi resmi dari Amazon Web Services yang memvalidasi pemahaman fundamental arsitektur cloud, keamanan, layanan inti AWS, dan model operasional cloud.
+                    </p>
+
+                    <dl class="cert-details mono">
+                        <div class="cert-row">
+                            <dt data-i18n="cert.holder">Pemegang</dt>
+                            <dd>Fawwaz Fr</dd>
+                        </div>
+                        <div class="cert-row">
+                            <dt data-i18n="cert.issued">Terbit</dt>
+                            <dd>4 Aug 2026</dd>
+                        </div>
+                        <div class="cert-row">
+                            <dt data-i18n="cert.expires">Berlaku s/d</dt>
+                            <dd>4 Aug 2029</dd>
+                        </div>
+                        <div class="cert-row cert-row-id">
+                            <dt data-i18n="cert.valId">Validation ID</dt>
+                            <dd class="val-id-wrap">
+                                <code id="aws-validation-id">7ebc4ecc7d044e519d00e1e18565bc2b</code>
+                                <button type="button" class="copy-btn" id="copy-cert-id" aria-label="Salin Validation ID AWS" title="Copy Validation ID">
+                                    <span class="icon-swap-grid" aria-hidden="true">
+                                        <svg class="icon-swap-layer copy-icon-default" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                                            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                                        </svg>
+                                        <svg class="icon-swap-layer copy-icon-success" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </span>
+                                    <span class="copy-label mono" data-i18n="cert.copy">Salin</span>
+                                </button>
+                            </dd>
+                        </div>
+                    </dl>
+
+                    <div class="cert-actions">
+                        <a href="AWS%20Certified%20Cloud%20Practitioner%20certificate%20(1).pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-trailing-icon">
+                            <span data-i18n="cert.viewPdf">Lihat Sertifikat (PDF)</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                        <a href="https://aws.amazon.com/verification" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <span data-i18n="cert.verify">Verifikasi AWS</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CONTACT / CONNECT SECTION -->
+        <section id="contact" class="section reveal-section">
+            <div class="surface-card contact-banner">
+                <div class="contact-copy">
+                    <span class="mono eyebrow-inline" data-i18n="contact.eyebrow">04 / MARI TERHUBUNG</span>
+                    <h2 class="contact-title" data-i18n="contact.title">Terbuka untuk peluang DevOps, Cloud, &amp; Web Engineering.</h2>
+                    <p class="contact-desc" data-i18n="contact.desc">
+                        Ingin berdiskusi tentang otomasi infrastruktur, deployment container, atau proyek pengembangan web? Silakan hubungi saya melalui kanal berikut.
+                    </p>
+                </div>
+
+                <div class="contact-links">
+                    <a href="https://github.com/Fawwazfara" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <span class="social-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                            </svg>
+                        </span>
+                        <span class="social-meta">
+                            <strong>GitHub</strong>
+                            <span class="mono">@Fawwazfara</span>
+                        </span>
+                        <svg class="social-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/fawwaz-fadel-rahman-430360310/" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <span class="social-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect width="4" height="12" x="2" y="9"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </span>
+                        <span class="social-meta">
+                            <strong>LinkedIn</strong>
+                            <span class="mono">Fawwaz Fadel Rahman</span>
+                        </span>
+                        <svg class="social-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+
+                    <a href="https://www.instagram.com/wwaz.py?igsi=MW9nbzcxbXBydm5wNw==" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <span class="social-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </span>
+                        <span class="social-meta">
+                            <strong>Instagram</strong>
+                            <span class="mono">@wwaz.py</span>
+                        </span>
+                        <svg class="social-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="mono-text text-center mt-4 mb-2">
-        <p class="muted-text">EOF. Connection closed by foreign host.</p>
+    <footer class="footer">
+        <div class="footer-container mono">
+            <span>&copy; 2026 Fawwaz Fadel Rahman</span>
+            <span class="footer-status">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span data-i18n="footer.status">EOF · All systems operational</span>
+            </span>
+        </div>
     </footer>
 
     <script src="script.js"></script>
