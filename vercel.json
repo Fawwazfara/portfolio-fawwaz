@@ -1,6 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/", "destination": "/fawwaz/index.html" },
-    { "source": "/(.*)", "destination": "/fawwaz/$1" }
-  ]
-}
