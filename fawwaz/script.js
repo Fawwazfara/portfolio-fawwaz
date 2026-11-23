@@ -37,6 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "stack.c4Desc": "Menulis skrip otomasi tugas sistem harian, integrasi CLI, version control, dan dasar relational database.",
             "stack.c5Title": "Web Development & Application Delivery",
             "stack.c5Desc": "Tidak hanya mengelola server dan pipeline — saya juga membangun antarmuka web modern dan memahami bagaimana aplikasi front-end maupun back-end berinteraksi dengan infrastruktur produksi.",
+            "stack.c6Title": "Monitoring & Observability",
+            "stack.c6Desc": "Pengumpulan metrik sistem dan aplikasi secara real-time serta visualisasi dashboard untuk memantau performa dan kesehatan layanan.",
+            "stack.c7Title": "Reverse Proxy & Caching",
+            "stack.c7Desc": "Pengaturan routing lalu lintas layanan di depan aplikasi serta pemanfaatan in-memory caching untuk mempercepat respons sistem.",
             "exp.eyebrow": "GIT LOG --GRAPH",
             "exp.title": "Pengalaman & Pelatihan",
             "exp.subtitle": "Perjalanan teknis dari fondasi perangkat keras hingga cloud engineering dan otomasi DevOps.",
@@ -102,6 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "stack.c4Desc": "Writing system automation scripts, CLI tooling, Git workflows, and relational database fundamentals.",
             "stack.c5Title": "Web Development & Application Delivery",
             "stack.c5Desc": "Beyond managing servers and pipelines — I build clean web interfaces and understand how front-end and back-end apps behave in production.",
+            "stack.c6Title": "Monitoring & Observability",
+            "stack.c6Desc": "Real-time system and application metrics collection paired with dashboard visualization to monitor service health and performance.",
+            "stack.c7Title": "Reverse Proxy & Caching",
+            "stack.c7Desc": "Routing incoming service traffic in front of applications and leveraging in-memory caching to improve response speed.",
             "exp.eyebrow": "GIT LOG --GRAPH",
             "exp.title": "Experience & Training",
             "exp.subtitle": "Technical journey from hardware & networking foundations to cloud engineering and DevOps automation.",
@@ -144,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 { type: "cmd", text: "$ stack --all" },
                 { type: "kv", key: "cloud   :", val: "AWS (CCP Certified), Linux, Networking, Security" },
                 { type: "kv", key: "ops     :", val: "Docker, Kubernetes, Terraform, Ansible, Jenkins, GitHub Actions" },
+                { type: "kv", key: "monitor :", val: "Prometheus, Grafana, Reverse Proxy, Redis" },
                 { type: "kv", key: "code    :", val: "Bash, Python, Git, HTML5, CSS3, JavaScript" }
             ],
             "aws-cert": [
@@ -179,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 { type: "cmd", text: "$ stack --all" },
                 { type: "kv", key: "cloud   :", val: "AWS (CCP Certified), Linux, Networking, Security" },
                 { type: "kv", key: "ops     :", val: "Docker, Kubernetes, Terraform, Ansible, Jenkins, GitHub Actions" },
+                { type: "kv", key: "monitor :", val: "Prometheus, Grafana, Reverse Proxy, Redis" },
                 { type: "kv", key: "code    :", val: "Bash, Python, Git, HTML5, CSS3, JavaScript" }
             ],
             "aws-cert": [
@@ -293,12 +303,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!cliOutput) return;
         cliOutput.replaceChildren();
 
-        lines.forEach((item) => {
+        lines.forEach((item, index) => {
             const row = document.createElement("div");
+            row.style.setProperty("--line-index", String(index));
             if (item.type === "cmd") {
-                row.className = "cli-line-cmd";
+                row.className = "cli-line-cmd cli-line-enter";
                 row.textContent = item.text;
             } else if (item.type === "kv") {
+                row.className = "cli-line-enter";
                 const keySpan = document.createElement("span");
                 keySpan.className = "cli-line-key";
                 keySpan.textContent = item.key + " ";
@@ -309,7 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 row.append(keySpan, valSpan);
             } else {
-                row.className = "cli-line-muted";
+                row.className = "cli-line-muted cli-line-enter";
                 row.textContent = item.text;
             }
             cliOutput.append(row);
@@ -427,7 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const drawerBackdrop = document.getElementById("drawer-backdrop");
     const drawerLinks = document.querySelectorAll(".drawer-link");
 
-    function setDrawerOpen(isOpen) {
+    function setDrawerOpen(isOpen, restoreFocus = true) {
         if (!mobileDrawer || !drawerBackdrop || !mobileToggle) return;
         mobileDrawer.classList.toggle("is-open", isOpen);
         mobileDrawer.setAttribute("aria-hidden", String(!isOpen));
@@ -437,8 +449,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (isOpen && mobileClose) {
             mobileClose.focus();
-        } else if (!isOpen) {
-            mobileToggle.focus();
+        } else if (!isOpen && restoreFocus) {
+            mobileToggle.focus({ preventScroll: true });
         }
     }
 
@@ -452,7 +464,7 @@ document.addEventListener("DOMContentLoaded", () => {
         drawerBackdrop.addEventListener("click", () => setDrawerOpen(false));
     }
     drawerLinks.forEach((link) => {
-        link.addEventListener("click", () => setDrawerOpen(false));
+        link.addEventListener("click", () => setDrawerOpen(false, false));
     });
     document.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && mobileDrawer && mobileDrawer.classList.contains("is-open")) {
@@ -461,33 +473,118 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ----------------------------------------------------------------------
-    // 6. Scroll Reveal & Active Nav Link Observer
+    // 6. Scroll Progress, Staggered Item Reveal & Smooth Anchor Navigation
     // ----------------------------------------------------------------------
-    const revealSections = document.querySelectorAll(".reveal-section");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const scrollProgressEl = document.getElementById("scroll-progress");
+
+    if (scrollProgressEl) {
+        let scrollTicking = false;
+        const updateScrollProgress = () => {
+            scrollTicking = false;
+            const doc = document.documentElement;
+            const scrollable = doc.scrollHeight - window.innerHeight;
+            const ratio = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+            scrollProgressEl.style.setProperty("--scroll-progress", ratio.toFixed(4));
+        };
+
+        window.addEventListener(
+            "scroll",
+            () => {
+                if (!scrollTicking) {
+                    scrollTicking = true;
+                    requestAnimationFrame(updateScrollProgress);
+                }
+            },
+            { passive: true }
+        );
+        updateScrollProgress();
+    }
+
+    // Smooth eased scroll for internal section links
+    function smoothScrollToTarget(targetEl) {
+        const navOffset = 84;
+        const targetY = Math.max(0, targetEl.getBoundingClientRect().top + window.scrollY - navOffset);
+
+        if (prefersReducedMotion.matches) {
+            window.scrollTo(0, targetY);
+            return;
+        }
+
+        const startY = window.scrollY;
+        const distance = targetY - startY;
+        if (Math.abs(distance) < 2) return;
+
+        const duration = Math.min(720, Math.max(380, Math.abs(distance) * 0.35));
+        const startTime = performance.now();
+
+        const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
+
+        function step(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(1, elapsed / duration);
+            window.scrollTo(0, startY + distance * easeOutQuart(progress));
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            }
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", (event) => {
+            const href = anchor.getAttribute("href");
+            if (!href || href === "#") return;
+            const target = document.querySelector(href);
+            if (!target) return;
+            event.preventDefault();
+            smoothScrollToTarget(target);
+            if (history.replaceState) {
+                history.replaceState(null, "", href);
+            }
+        });
+    });
+
+    const revealTargets = document.querySelectorAll(
+        ".cli-panel, .section-header, .stack-card, .timeline-item, .project-card, .cert-card, .contact-banner"
+    );
     const navLinks = document.querySelectorAll(".nav-link");
     const trackedSections = document.querySelectorAll("main > section[id]");
+
+    revealTargets.forEach((el) => el.classList.add("reveal-item"));
 
     if ("IntersectionObserver" in window) {
         const revealObserver = new IntersectionObserver(
             (entries, observer) => {
+                let batchIndex = 0;
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.remove("is-pending");
-                        entry.target.classList.add("is-revealed");
-                        observer.unobserve(entry.target);
-                    }
+                    if (!entry.isIntersecting) return;
+                    const el = entry.target;
+                    const delayMs = prefersReducedMotion.matches ? 0 : Math.min(batchIndex, 5) * 85;
+                    batchIndex += 1;
+
+                    el.style.setProperty("--reveal-delay", `${delayMs}ms`);
+                    el.classList.remove("is-pending");
+                    el.classList.add("is-revealed");
+
+                    setTimeout(() => {
+                        el.classList.add("is-settled");
+                    }, delayMs + 540);
+
+                    observer.unobserve(el);
                 });
             },
-            { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+            { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
         );
 
-        revealSections.forEach((sec) => {
-            const rect = sec.getBoundingClientRect();
-            if (rect.top > window.innerHeight * 0.92) {
-                sec.classList.add("is-pending");
-                revealObserver.observe(sec);
+        revealTargets.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top > window.innerHeight * 0.9) {
+                el.classList.add("is-pending");
+                revealObserver.observe(el);
             } else {
-                sec.classList.add("is-revealed");
+                el.classList.add("is-revealed", "is-settled");
             }
         });
 
@@ -508,7 +605,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         trackedSections.forEach((sec) => navObserver.observe(sec));
     } else {
-        revealSections.forEach((sec) => sec.classList.add("is-revealed"));
+        revealTargets.forEach((el) => el.classList.add("is-revealed", "is-settled"));
     }
 
     // Initialize default language & CLI state

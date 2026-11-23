@@ -202,9 +202,9 @@ button {
     border: 1px solid transparent;
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-border);
-    transition-property: box-shadow, background-color;
-    transition-duration: 150ms;
-    transition-timing-function: ease-out;
+    transition-property: transform, box-shadow, background-color;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ==========================================================================
@@ -218,6 +218,19 @@ button {
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border-structural);
+}
+
+.scroll-progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan));
+    transform: scaleX(var(--scroll-progress, 0));
+    transform-origin: left center;
+    pointer-events: none;
+    opacity: 0.9;
 }
 
 .nav-container {
@@ -1528,6 +1541,17 @@ button {
         box-shadow: var(--shadow-border-hover);
     }
 
+    @media (prefers-reduced-motion: no-preference) {
+        .stack-card:hover,
+        .timeline-card:hover,
+        .project-card:hover,
+        .cert-card:hover,
+        .mini-card-interactive:hover,
+        .social-card:hover {
+            transform: translateY(-3px);
+        }
+    }
+
     .mini-card-interactive:hover,
     .social-card:hover {
         background-color: var(--bg-surface-elevated);
@@ -1551,8 +1575,55 @@ button {
 }
 
 /* ==========================================================================
-   STAGGERED ENTRANCES & SCROLL REVEAL (better-ui enter-exit.md)
+   STATUS PULSE, CLI LINE REVEAL & SCROLL REVEAL (better-ui)
    ========================================================================== */
+.status-dot {
+    position: relative;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .status-dot::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background-color: var(--accent-green);
+        animation: status-pulse 2.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+
+    @keyframes status-pulse {
+        0% {
+            transform: scale(1);
+            opacity: 0.65;
+        }
+        75%,
+        100% {
+            transform: scale(2.4);
+            opacity: 0;
+        }
+    }
+}
+
+.cli-line-enter {
+    animation: fade-in 200ms ease-out both;
+    animation-delay: calc(var(--line-index, 0) * 40ms);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .cli-line-enter {
+        animation-name: cli-line-in;
+        animation-duration: 260ms;
+        animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    @keyframes cli-line-in {
+        from {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+    }
+}
+
 .stagger-item {
     animation: fade-in 300ms ease-out both;
 }
@@ -1569,47 +1640,51 @@ button {
 @media (prefers-reduced-motion: no-preference) {
     .stagger-item {
         animation-name: fade-in-up;
+        animation-duration: 420ms;
+        animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     @keyframes fade-in-up {
         from {
             opacity: 0;
-            transform: translateY(12px);
+            transform: translateY(14px);
             filter: blur(4px);
         }
     }
 
-    .reveal-section {
-        transition-property: opacity, transform, filter;
-        transition-duration: 300ms;
-        transition-timing-function: ease-out;
-    }
-
-    .reveal-section.is-pending {
+    .reveal-item.is-pending {
         opacity: 0;
-        transform: translateY(12px);
+        transform: translateY(20px) scale(0.985);
         filter: blur(4px);
     }
 
-    .reveal-section.is-revealed {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0px);
+    .reveal-item.is-revealed {
+        transition-property: opacity, transform, filter, box-shadow, background-color;
+        transition-duration: 520ms, 520ms, 520ms, 200ms, 200ms;
+        transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+        transition-delay: var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0ms, 0ms;
+    }
+
+    .reveal-item.is-settled {
+        transition-property: transform, box-shadow, background-color;
+        transition-duration: 200ms;
+        transition-delay: 0ms;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .reveal-section {
+    .reveal-item {
         transition-property: opacity;
         transition-duration: 150ms;
         transition-timing-function: ease-out;
     }
 
-    .reveal-section.is-pending {
+    .reveal-item.is-pending {
         opacity: 0;
     }
 
-    .reveal-section.is-revealed {
+    .reveal-item.is-revealed,
+    .reveal-item.is-settled {
         opacity: 1;
     }
 }
