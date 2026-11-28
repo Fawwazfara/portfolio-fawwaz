@@ -349,7 +349,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "proj.title": "Proyek & Arsitektur",
             "proj.subtitle": "Pilih kategori atau klik kartu proyek untuk melihat diagram arsitektur, masalah yang diselesaikan, dan solusi teknis.",
             "filter.all": "Semua",
-            "proj.viewDetail": "Lihat detail & arsitektur",
+            "proj.viewDetail": "Lihat Selengkapnya",
+            "proj.liveDemo": "Live Demo",
             "proj.empty": "Belum ada proyek di kategori ini.",
             "status.live": "Live",
             "status.completed": "Selesai",
@@ -459,7 +460,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "proj.title": "Projects & Architecture",
             "proj.subtitle": "Filter by category or click any project card to inspect its architecture diagram, problem solved, and technical solution.",
             "filter.all": "All",
-            "proj.viewDetail": "View details & architecture",
+            "proj.viewDetail": "View Details",
+            "proj.liveDemo": "Live Demo",
             "proj.empty": "No projects match this category yet.",
             "status.live": "Live",
             "status.completed": "Completed",
@@ -655,15 +657,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         filtered.forEach((project, idx) => {
-            const card = document.createElement("button");
-            card.type = "button";
+            const card = document.createElement("article");
             card.className = "surface-card project-card";
             if (animate) {
                 card.classList.add("is-entering");
                 card.style.animationDelay = `${idx * 55}ms`;
             }
             card.setAttribute("data-project-id", project.id);
-            card.setAttribute("aria-label", `${project.title[currentLang]} — ${dict["proj.viewDetail"]}`);
 
             const topMeta = document.createElement("div");
             topMeta.className = "card-top-meta";
@@ -703,16 +703,80 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             const footer = document.createElement("div");
-            footer.className = "project-card-footer mono";
-            const actionLabel = document.createElement("span");
-            actionLabel.textContent = dict["proj.viewDetail"];
-            const arrow = document.createElement("span");
-            arrow.setAttribute("aria-hidden", "true");
-            arrow.textContent = "→";
-            footer.append(actionLabel, arrow);
+            footer.className = "project-card-footer";
+
+            const detailBtn = document.createElement("button");
+            detailBtn.type = "button";
+            detailBtn.className = "btn btn-sm btn-trailing-icon project-detail-btn";
+            detailBtn.setAttribute("aria-label", `${dict["proj.viewDetail"]}: ${project.title[currentLang]}`);
+            const btnLabel = document.createElement("span");
+            btnLabel.textContent = dict["proj.viewDetail"];
+
+            const svgNS = "http://www.w3.org/2000/svg";
+            const arrowSvg = document.createElementNS(svgNS, "svg");
+            arrowSvg.setAttribute("width", "15");
+            arrowSvg.setAttribute("height", "15");
+            arrowSvg.setAttribute("viewBox", "0 0 24 24");
+            arrowSvg.setAttribute("fill", "none");
+            arrowSvg.setAttribute("stroke", "currentColor");
+            arrowSvg.setAttribute("stroke-width", "2");
+            arrowSvg.setAttribute("stroke-linecap", "round");
+            arrowSvg.setAttribute("stroke-linejoin", "round");
+            arrowSvg.setAttribute("aria-hidden", "true");
+            const line = document.createElementNS(svgNS, "line");
+            line.setAttribute("x1", "5");
+            line.setAttribute("y1", "12");
+            line.setAttribute("x2", "19");
+            line.setAttribute("y2", "12");
+            const poly = document.createElementNS(svgNS, "polyline");
+            poly.setAttribute("points", "12 5 19 12 12 19");
+            arrowSvg.append(line, poly);
+            detailBtn.append(btnLabel, arrowSvg);
+            detailBtn.addEventListener("click", (event) => {
+                event.stopPropagation();
+                openProjectModal(project.id, detailBtn);
+            });
+
+            footer.append(detailBtn);
+
+            if (project.demoUrl && !project.demoUrl.startsWith("#TODO")) {
+                const demoLink = document.createElement("a");
+                demoLink.href = project.demoUrl;
+                demoLink.target = "_blank";
+                demoLink.rel = "noopener noreferrer";
+                demoLink.className = "btn btn-sm btn-secondary btn-trailing-icon project-demo-link";
+                demoLink.setAttribute("aria-label", `${dict["proj.liveDemo"]}: ${project.title[currentLang]}`);
+                const demoText = document.createElement("span");
+                demoText.textContent = dict["proj.liveDemo"];
+
+                const extSvg = document.createElementNS(svgNS, "svg");
+                extSvg.setAttribute("width", "14");
+                extSvg.setAttribute("height", "14");
+                extSvg.setAttribute("viewBox", "0 0 24 24");
+                extSvg.setAttribute("fill", "none");
+                extSvg.setAttribute("stroke", "currentColor");
+                extSvg.setAttribute("stroke-width", "2");
+                extSvg.setAttribute("stroke-linecap", "round");
+                extSvg.setAttribute("stroke-linejoin", "round");
+                extSvg.setAttribute("aria-hidden", "true");
+                const p1 = document.createElementNS(svgNS, "path");
+                p1.setAttribute("d", "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6");
+                const p2 = document.createElementNS(svgNS, "polyline");
+                p2.setAttribute("points", "15 3 21 3 21 9");
+                const l1 = document.createElementNS(svgNS, "line");
+                l1.setAttribute("x1", "10");
+                l1.setAttribute("y1", "14");
+                l1.setAttribute("x2", "21");
+                l1.setAttribute("y2", "3");
+                extSvg.append(p1, p2, l1);
+
+                demoLink.append(demoText, extSvg);
+                demoLink.addEventListener("click", (event) => event.stopPropagation());
+                footer.append(demoLink);
+            }
 
             card.append(topMeta, title, desc, tagList, footer);
-            card.addEventListener("click", () => openProjectModal(project.id, card));
+            card.addEventListener("click", () => openProjectModal(project.id, detailBtn));
             projectsGrid.append(card);
         });
     }
