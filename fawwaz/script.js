@@ -4,6 +4,71 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================================================================
     const PROJECTS = [
         {
+            id: "jenkinsfile-generator",
+            status: "live",
+            isPlaceholder: false,
+            tags: ["DevOps", "CI/CD", "Web"],
+            techStack: ["Jenkins", "Docker", "JavaScript", "HTML5", "CSS3", "Vercel"],
+            repoUrl: "https://github.com/Fawwazfara/jenkinsFile-generator",
+            demoUrl: "https://jenkinsfile-generator.vercel.app/",
+            title: {
+                id: "Self-Service Jenkinsfile Generator",
+                en: "Self-Service Jenkinsfile Generator"
+            },
+            summary: {
+                id: "Aplikasi web zero-dependency dengan wizard 4 langkah untuk menghasilkan Jenkinsfile berbasis Jenkins Shared Library (Laravel, Node.js, Go).",
+                en: "Zero-dependency 4-step wizard web app that generates Jenkinsfiles for Jenkins Shared Libraries across Laravel, Node.js, and Go stacks."
+            },
+            problem: {
+                id: "Menulis Jenkinsfile secara manual untuk proyek multi-stack (Laravel, Node.js, Go) dengan standar keamanan DevSecOps dan konfigurasi Docker rawan kesalahan sintaks serta memperlambat setup CI/CD tim.",
+                en: "Manually authoring Jenkinsfiles for multi-stack projects (Laravel, Node.js, Go) with DevSecOps security gates and Docker configs is error-prone and slows down CI/CD onboarding."
+            },
+            solution: {
+                id: "Membangun wizard interaktif 4 langkah tanpa backend (HTML/CSS/JS murni) dengan preset skala MVP hingga Enterprise, dukungan Gitleaks, Trivy CVE scan, Hadolint, Docker Buildx, serta live output Jenkinsfile, Dockerfile, dan gitleaks.toml.",
+                en: "Built a backend-free 4-step interactive wizard (vanilla HTML/CSS/JS) featuring MVP-to-Enterprise presets, Gitleaks, Trivy CVE scanning, Hadolint, Docker Buildx options, and live Jenkinsfile, Dockerfile, and gitleaks.toml generation."
+            },
+            impact: {
+                id: "Mempercepat pembuatan pipeline Jenkins berstandar DevSecOps melalui pratinjau stage flow real-time dan ekspor sekali klik (Copy/Download), sudah live di Vercel.",
+                en: "Speeds up DevSecOps-ready Jenkins pipeline creation with real-time stage flow previews and one-click Copy/Download export, deployed live on Vercel."
+            },
+            architecture: {
+                nodes: [
+                    {
+                        label: "Stack & Scale",
+                        sub: "Laravel / Node / Go",
+                        tooltip: {
+                            id: "Memilih stack bahasa serta skala pipeline (MVP, Standard, atau Enterprise).",
+                            en: "Selects target language stack and pipeline tier (MVP, Standard, or Enterprise)."
+                        }
+                    },
+                    {
+                        label: "Config Wizard",
+                        sub: "4-Step UI",
+                        tooltip: {
+                            id: "Konfigurasi test, Gitleaks, dependency audit, Trivy scan, Docker registry, dan notifikasi.",
+                            en: "Configures tests, Gitleaks, dependency audit, Trivy scan, Docker registry, and notifications."
+                        }
+                    },
+                    {
+                        label: "Groovy Engine",
+                        sub: "jenkinsGenerator.js",
+                        tooltip: {
+                            id: "Mengompilasi state UI menjadi Jenkinsfile (Ringkas/Modular), Dockerfile, dan gitleaks.toml.",
+                            en: "Compiles UI state into Jenkinsfile (Compact/Modular), Dockerfile, and gitleaks.toml."
+                        }
+                    },
+                    {
+                        label: "Jenkins CI/CD",
+                        sub: "Shared Lib + Vercel",
+                        tooltip: {
+                            id: "Output siap pakai di Jenkins Shared Library; aplikasi generator di-host di Vercel.",
+                            en: "Ready-to-use output for Jenkins Shared Library; generator web app hosted on Vercel."
+                        }
+                    }
+                ]
+            }
+        },
+        {
             id: "infak-management-system",
             status: "completed",
             isPlaceholder: false,
@@ -244,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "about.title": "Tentang Saya",
             "about.p1": "Perjalanan teknis saya berawal dari magang sebagai teknisi komputer dan printer pada 2025, menangani troubleshooting perangkat keras dan jaringan secara langsung.",
             "about.p2": "Ketertarikan pada sistem yang lebih terstruktur membawa saya mendalami cloud computing lewat program intensif AWS re/Start hingga meraih sertifikasi AWS Certified Cloud Practitioner pada 2026. Saat ini saya menargetkan karir sebagai Cloud & DevOps Engineer yang juga memahami pengembangan web, sehingga mampu menjembatani penulisan kode hingga otomasi operasional di produksi.",
-            "about.statProjectsLabel": "Proyek Selesai",
+            "about.statProjectsLabel": "Proyek Selesai & Live",
             "about.statProjectsNote": "+ 2 template DevOps (TODO)",
             "about.statCertLabel": "Sertifikasi Resmi",
             "about.statYearsLabel": "Tahun Belajar & Praktik",
@@ -354,7 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "about.title": "About Me",
             "about.p1": "My technical journey started in 2025 as a Computer & Printer Technician intern, handling hands-on hardware maintenance and foundational network troubleshooting.",
             "about.p2": "An interest in structured, automated systems led me into cloud computing through the AWS re/Start program and earning the AWS Certified Cloud Practitioner credential in 2026. Today I'm targeting a Cloud & DevOps Engineer role while bringing solid web development skills to bridge code and production operations.",
-            "about.statProjectsLabel": "Completed Project",
+            "about.statProjectsLabel": "Completed & Live Projects",
             "about.statProjectsNote": "+ 2 DevOps templates (TODO)",
             "about.statCertLabel": "Official Certification",
             "about.statYearsLabel": "Years Learning & Practice",
