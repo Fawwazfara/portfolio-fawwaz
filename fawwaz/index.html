@@ -3,11 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fawwaz Fadel Rahman — Cloud & DevOps Engineer</title>
-    <meta name="description" content="Portfolio of Fawwaz Fadel Rahman — Cloud & DevOps Engineer with Web Development capabilities. AWS Certified Cloud Practitioner.">
+    <title>Fawwaz Fadel Rahman — Cloud &amp; DevOps Engineer</title>
+    <meta name="description" content="Portofolio Fawwaz Fadel Rahman — Cloud & DevOps Engineer dengan pemahaman web development. AWS Certified Cloud Practitioner.">
     <meta name="theme-color" content="#090D16">
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Fawwaz Fadel Rahman — Cloud & DevOps Engineer">
+    <meta property="og:description" content="Cloud & DevOps Engineer dengan pemahaman web development. AWS Certified Cloud Practitioner.">
+    <meta property="og:image" content="images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="id_ID">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fawwaz Fadel Rahman — Cloud & DevOps Engineer">
+    <meta name="twitter:description" content="Cloud & DevOps Engineer dengan pemahaman web development. AWS Certified Cloud Practitioner.">
+    <meta name="twitter:image" content="images/og-image.png">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23090D16'/%3E%3Cpath d='M9 11l6 5-6 5M17 21h6' stroke='%2322C55E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+
+    <!-- Preload self-hosted fonts -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/space-grotesk-latin.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-latin.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/jetbrains-mono-latin.woff2">
 
     <!-- Prevent theme flash on initial load -->
     <script>
@@ -20,10 +41,32 @@
         })();
     </script>
 
-    <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Structured Data (JSON-LD Person) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Fawwaz Fadel Rahman",
+        "alternateName": "Fawwaz Fr",
+        "jobTitle": "Cloud & DevOps Engineer",
+        "description": "Cloud & DevOps Engineer with web development capabilities. AWS Certified Cloud Practitioner.",
+        "image": "images/fawwaz-800.webp",
+        "sameAs": [
+            "https://github.com/Fawwazfara",
+            "https://www.linkedin.com/in/fawwaz-fadel-rahman-430360310/",
+            "https://www.instagram.com/wwaz.py"
+        ],
+        "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "AWS Certified Cloud Practitioner",
+            "credentialCategory": "certification",
+            "recognizedBy": {
+                "@type": "Organization",
+                "name": "Amazon Web Services (AWS)"
+            }
+        }
+    }
+    </script>
 
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -44,10 +87,11 @@
             </a>
 
             <nav class="nav-links" aria-label="Navigasi utama">
-                <a href="#hero" class="nav-link" data-i18n="nav.about">Profil</a>
+                <a href="#about" class="nav-link" data-i18n="nav.about">Tentang</a>
                 <a href="#stack" class="nav-link" data-i18n="nav.stack">Kompetensi</a>
                 <a href="#experience" class="nav-link" data-i18n="nav.experience">Pengalaman</a>
-                <a href="#projects" class="nav-link" data-i18n="nav.projects">Proyek & Sertifikasi</a>
+                <a href="#projects" class="nav-link" data-i18n="nav.projects">Proyek</a>
+                <a href="#credentials" class="nav-link" data-i18n="nav.credentials">Kredensial</a>
                 <a href="#contact" class="nav-link" data-i18n="nav.contact">Kontak</a>
             </nav>
 
@@ -78,7 +122,39 @@
                 </button>
             </div>
         </div>
-        <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+        <div class="nav-pipeline" id="nav-pipeline" role="navigation" aria-label="Progress bagian halaman">
+            <div class="nav-pipeline-inner">
+                <div class="nav-pipeline-track" aria-hidden="true">
+                    <div class="nav-pipeline-fill" id="scroll-progress"></div>
+                </div>
+                <div class="nav-pipeline-nodes">
+                    <button type="button" class="pipeline-node is-upcoming" data-target="about" data-i18n-aria="pipelineNav.aboutAria" aria-label="Lompat ke bagian Tentang">
+                        <span class="pipeline-node-dot" aria-hidden="true"></span>
+                        <span class="pipeline-node-tooltip mono" data-i18n="nav.about">Tentang</span>
+                    </button>
+                    <button type="button" class="pipeline-node is-upcoming" data-target="stack" data-i18n-aria="pipelineNav.stackAria" aria-label="Lompat ke bagian Kompetensi">
+                        <span class="pipeline-node-dot" aria-hidden="true"></span>
+                        <span class="pipeline-node-tooltip mono" data-i18n="nav.stack">Kompetensi</span>
+                    </button>
+                    <button type="button" class="pipeline-node is-upcoming" data-target="experience" data-i18n-aria="pipelineNav.experienceAria" aria-label="Lompat ke bagian Pengalaman">
+                        <span class="pipeline-node-dot" aria-hidden="true"></span>
+                        <span class="pipeline-node-tooltip mono" data-i18n="nav.experience">Pengalaman</span>
+                    </button>
+                    <button type="button" class="pipeline-node is-upcoming" data-target="projects" data-i18n-aria="pipelineNav.projectsAria" aria-label="Lompat ke bagian Proyek">
+                        <span class="pipeline-node-dot" aria-hidden="true"></span>
+                        <span class="pipeline-node-tooltip mono" data-i18n="nav.projects">Proyek</span>
+                    </button>
+                    <button type="button" class="pipeline-node is-upcoming" data-target="credentials" data-i18n-aria="pipelineNav.credentialsAria" aria-label="Lompat ke bagian Kredensial">
+                        <span class="pipeline-node-dot" aria-hidden="true"></span>
+                        <span class="pipeline-node-tooltip mono" data-i18n="nav.credentials">Kredensial</span>
+                    </button>
+                    <button type="button" class="pipeline-node is-upcoming" data-target="contact" data-i18n-aria="pipelineNav.contactAria" aria-label="Lompat ke bagian Kontak">
+                        <span class="pipeline-node-dot" aria-hidden="true"></span>
+                        <span class="pipeline-node-tooltip mono" data-i18n="nav.contact">Kontak</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- MOBILE NAVIGATION DRAWER -->
@@ -94,10 +170,11 @@
             </button>
         </div>
         <nav class="drawer-nav">
-            <a href="#hero" class="drawer-link" data-i18n="nav.about">Profil</a>
+            <a href="#about" class="drawer-link" data-i18n="nav.about">Tentang</a>
             <a href="#stack" class="drawer-link" data-i18n="nav.stack">Kompetensi</a>
             <a href="#experience" class="drawer-link" data-i18n="nav.experience">Pengalaman</a>
-            <a href="#projects" class="drawer-link" data-i18n="nav.projects">Proyek & Sertifikasi</a>
+            <a href="#projects" class="drawer-link" data-i18n="nav.projects">Proyek</a>
+            <a href="#credentials" class="drawer-link" data-i18n="nav.credentials">Kredensial</a>
             <a href="#contact" class="drawer-link" data-i18n="nav.contact">Kontak</a>
         </nav>
         <div class="drawer-footer">
@@ -113,24 +190,58 @@
         <!-- HERO BENTO SECTION -->
         <section id="hero" class="hero-section">
             <div class="hero-grid">
-                <!-- Left Column: Narrative & Primary Actions -->
-                <div class="hero-content">
-                    <div class="stagger-item">
-                        <div class="status-pill">
-                            <span class="status-dot" aria-hidden="true"></span>
-                            <span class="mono" data-i18n="hero.badge">DevOps &amp; Cloud Engineer · Web Dev Fluent</span>
-                        </div>
+                <!-- Grid Area: Top Intro (Badge + Title + Role Rotator) -->
+                <div class="hero-intro stagger-item">
+                    <div class="status-pill">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        <span class="mono" data-i18n="hero.badge">DevOps &amp; Cloud Engineer · Web Dev Fluent</span>
                     </div>
 
-                    <div class="stagger-item">
-                        <h1 class="hero-title">
-                            <span data-i18n="hero.greeting">Halo, saya</span>
-                            <span class="hero-name">Fawwaz Fadel Rahman.</span>
-                        </h1>
-                        <p class="hero-subtitle" data-i18n="hero.headline">
-                            Membangun infrastruktur cloud yang skalabel, aman, dan otomatis — dengan pemahaman web development yang utuh.
-                        </p>
+                    <h1 class="hero-title">
+                        <span data-i18n="hero.greeting">Halo, saya</span>
+                        <span class="hero-name">Fawwaz Fadel Rahman.</span>
+                    </h1>
+
+                    <p class="hero-role-rotator mono">
+                        <span class="rotator-prefix" aria-hidden="true">&gt;_</span>
+                        <span id="role-rotator" class="rotator-value" aria-live="polite">Cloud Engineer</span>
+                    </p>
+                </div>
+
+                <!-- Grid Area: Portrait Card (Left beside title on mobile, Right column on desktop) -->
+                <figure class="surface-card portrait-card stagger-item">
+                    <div class="portrait-frame">
+                        <picture>
+                            <source
+                                type="image/webp"
+                                srcset="images/fawwaz-400.webp 400w, images/fawwaz-800.webp 800w"
+                                sizes="(max-width: 768px) 84px, 420px"
+                            >
+                            <img
+                                src="images/fawwaz.jpg"
+                                alt="Foto Fawwaz Fadel Rahman, Cloud dan DevOps Engineer"
+                                class="portrait-img"
+                                width="800"
+                                height="926"
+                                fetchpriority="high"
+                                decoding="async"
+                            >
+                        </picture>
+                        <figcaption class="portrait-caption">
+                            <span class="mono caption-tag">fawwaz@cloud</span>
+                            <span class="caption-badge">
+                                <span class="status-dot" aria-hidden="true"></span>
+                                <span data-i18n="portrait.status">Siap Kolaborasi</span>
+                            </span>
+                        </figcaption>
                     </div>
+                </figure>
+
+                <!-- Grid Area: Body Copy, Actions & Metrics -->
+                <div class="hero-body">
+                    <p class="hero-subtitle stagger-item" data-i18n="hero.headline">
+                        Membangun infrastruktur cloud yang skalabel, aman, dan otomatis — dengan pemahaman web development yang utuh.
+                    </p>
 
                     <p class="hero-desc stagger-item" data-i18n="hero.desc">
                         Saya berfokus pada operasional Cloud &amp; DevOps (AWS, Docker, Kubernetes, Terraform, CI/CD) sekaligus memahami alur pengembangan aplikasi web dari sisi kode hingga deployment ke produksi.
@@ -138,27 +249,40 @@
 
                     <div class="hero-actions stagger-item">
                         <a href="#projects" class="btn btn-primary btn-trailing-icon">
-                            <span data-i18n="hero.ctaPrimary">Lihat Proyek &amp; Sertifikasi</span>
+                            <span data-i18n="hero.ctaPrimary">Lihat Proyek</span>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
                         </a>
-                        <a href="https://github.com/Fawwazfara" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-leading-icon">
+
+                        <!-- TODO: Taruh file cv.pdf di folder root portofolio agar tombol Download CV mengunduh CV asli Anda -->
+                        <a href="cv.pdf" download class="btn btn-secondary btn-leading-icon" id="download-cv-btn">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
                             </svg>
-                            <span>GitHub</span>
+                            <span data-i18n="hero.downloadCv">Download CV</span>
                         </a>
-                        <a href="https://www.linkedin.com/in/fawwaz-fadel-rahman-430360310/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-leading-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect width="4" height="12" x="2" y="9"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                            <span>LinkedIn</span>
-                        </a>
+
+                        <div class="hero-social-group">
+                            <a href="https://github.com/Fawwazfara" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-leading-icon btn-social-compact" aria-label="GitHub Fawwazfara">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                                </svg>
+                                <span class="btn-social-label">GitHub</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/fawwaz-fadel-rahman-430360310/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-leading-icon btn-social-compact" aria-label="LinkedIn Fawwaz Fadel Rahman">
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect width="4" height="12" x="2" y="9"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                                <span class="btn-social-label">LinkedIn</span>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Quick Metrics Strip -->
@@ -180,59 +304,35 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Bento Portrait + Identity Tiles -->
-                <div class="hero-bento stagger-item">
-                    <!-- Concentric Portrait Card -->
-                    <figure class="surface-card portrait-card">
-                        <div class="portrait-frame">
-                            <img
-                                src="images/fawwaz.jpg"
-                                alt="Foto Fawwaz Fadel Rahman, Cloud dan DevOps Engineer"
-                                class="portrait-img"
-                                width="640"
-                                height="760"
-                                decoding="async"
-                            >
-                            <div class="portrait-caption">
-                                <span class="mono caption-tag">fawwaz@cloud</span>
-                                <span class="caption-badge">
-                                    <span class="status-dot" aria-hidden="true"></span>
-                                    <span data-i18n="portrait.status">Siap Kolaborasi</span>
-                                </span>
-                            </div>
+                <!-- Grid Area: Two Mini Bento Cards -->
+                <div class="hero-mini-grid stagger-item">
+                    <a href="#credentials" class="surface-card mini-card mini-card-interactive">
+                        <div class="mini-card-top">
+                            <span class="mini-icon mini-icon-amber" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    <path d="m9 12 2 2 4-4"></path>
+                                </svg>
+                            </span>
+                            <span class="mono mini-kicker">AWS CERTIFIED</span>
                         </div>
-                    </figure>
+                        <p class="mini-title">Cloud Practitioner</p>
+                        <p class="mini-sub mono" data-i18n="mini.certSub">Berlaku s/d 4 Aug 2029</p>
+                    </a>
 
-                    <!-- Two Mini Bento Cards -->
-                    <div class="hero-mini-grid">
-                        <a href="#certificate" class="surface-card mini-card mini-card-interactive">
-                            <div class="mini-card-top">
-                                <span class="mini-icon mini-icon-amber" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                        <path d="m9 12 2 2 4-4"></path>
-                                    </svg>
-                                </span>
-                                <span class="mono mini-kicker">AWS CERTIFIED</span>
-                            </div>
-                            <p class="mini-title">Cloud Practitioner</p>
-                            <p class="mini-sub mono">ID: 7ebc4ecc...bc2b</p>
-                        </a>
-
-                        <a href="#stack" class="surface-card mini-card mini-card-interactive">
-                            <div class="mini-card-top">
-                                <span class="mini-icon mini-icon-cyan" aria-hidden="true">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="16 18 22 12 16 6"></polyline>
-                                        <polyline points="8 6 2 12 8 18"></polyline>
-                                    </svg>
-                                </span>
-                                <span class="mono mini-kicker" data-i18n="mini.bridgeKicker">DUAL SKILLSET</span>
-                            </div>
-                            <p class="mini-title" data-i18n="mini.bridgeTitle">Infra + Web Dev</p>
-                            <p class="mini-sub" data-i18n="mini.bridgeSub">Code to Production</p>
-                        </a>
-                    </div>
+                    <a href="#stack" class="surface-card mini-card mini-card-interactive">
+                        <div class="mini-card-top">
+                            <span class="mini-icon mini-icon-cyan" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                            </span>
+                            <span class="mono mini-kicker" data-i18n="mini.bridgeKicker">DUAL SKILLSET</span>
+                        </div>
+                        <p class="mini-title" data-i18n="mini.bridgeTitle">Infra + Web Dev</p>
+                        <p class="mini-sub" data-i18n="mini.bridgeSub">Code to Production</p>
+                    </a>
                 </div>
             </div>
 
@@ -247,9 +347,10 @@
                     <span class="cli-title mono">bash — fawwaz@devops:~</span>
                     <div class="cli-presets" role="group" aria-label="Perintah cepat terminal">
                         <button type="button" class="cli-preset active" data-cmd="whoami" aria-pressed="true">whoami</button>
-                        <button type="button" class="cli-preset" data-cmd="stack" aria-pressed="false">stack --all</button>
-                        <button type="button" class="cli-preset" data-cmd="aws-cert" aria-pressed="false">aws --verify</button>
-                        <button type="button" class="cli-preset" data-cmd="projects" aria-pressed="false">ls ./projects</button>
+                        <button type="button" class="cli-preset" data-cmd="stack" aria-pressed="false">stack</button>
+                        <button type="button" class="cli-preset" data-cmd="projects" aria-pressed="false">projects</button>
+                        <button type="button" class="cli-preset" data-cmd="cat resume" aria-pressed="false">cat resume</button>
+                        <button type="button" class="cli-preset" data-cmd="help" aria-pressed="false">help</button>
                     </div>
                 </div>
                 <div class="cli-body mono">
@@ -263,7 +364,7 @@
                             class="cli-input mono"
                             autocomplete="off"
                             spellcheck="false"
-                            placeholder="Ketik 'help', 'whoami', 'stack', 'cert', atau klik preset di atas..."
+                            placeholder="Ketik perintah ('help', 'projects', 'open infak', Tab autocomplete, ↑/↓ riwayat)..."
                             data-i18n-placeholder="cli.placeholder"
                         >
                     </form>
@@ -271,16 +372,56 @@
             </div>
         </section>
 
-        <!-- COMPETENCIES BENTO SECTION -->
-        <section id="stack" class="section reveal-section">
+        <!-- SECTION 01: TENTANG SAYA -->
+        <section id="about" class="section">
             <div class="section-header">
                 <div class="section-eyebrow mono">
                     <span class="eyebrow-index">01</span>
+                    <span data-i18n="about.eyebrow">ABOUT ME</span>
+                </div>
+                <h2 class="section-title" data-i18n="about.title">Tentang Saya</h2>
+            </div>
+
+            <div class="about-grid">
+                <article class="surface-card about-card">
+                    <p class="about-text" data-i18n="about.p1">
+                        Perjalanan teknis saya berawal dari magang sebagai teknisi komputer dan printer pada 2025, menangani troubleshooting perangkat keras dan jaringan secara langsung.
+                    </p>
+                    <p class="about-text" data-i18n="about.p2">
+                        Ketertarikan pada sistem yang lebih terstruktur membawa saya mendalami cloud computing lewat program intensif AWS re/Start hingga meraih sertifikasi AWS Certified Cloud Practitioner pada 2026. Saat ini saya menargetkan karir sebagai Cloud &amp; DevOps Engineer yang juga memahami pengembangan web, sehingga mampu menjembatani penulisan kode hingga otomasi operasional di produksi.
+                    </p>
+                </article>
+
+                <div class="about-stats-grid">
+                    <div class="surface-card about-stat-card">
+                        <span class="about-stat-value mono" id="about-project-count">1</span>
+                        <span class="about-stat-label" data-i18n="about.statProjectsLabel">Proyek Selesai</span>
+                        <span class="about-stat-note mono" data-i18n="about.statProjectsNote">+ 2 template DevOps (TODO)</span>
+                    </div>
+                    <div class="surface-card about-stat-card">
+                        <span class="about-stat-value mono">1</span>
+                        <span class="about-stat-label" data-i18n="about.statCertLabel">Sertifikasi Resmi</span>
+                        <span class="about-stat-note mono">AWS Cloud Practitioner</span>
+                    </div>
+                    <div class="surface-card about-stat-card">
+                        <span class="about-stat-value mono">2025–2026</span>
+                        <span class="about-stat-label" data-i18n="about.statYearsLabel">Tahun Belajar &amp; Praktik</span>
+                        <span class="about-stat-note mono" data-i18n="about.statYearsNote">Hardware → Cloud &amp; DevOps</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 02: COMPETENCIES & INTERACTIVE CI/CD PIPELINE -->
+        <section id="stack" class="section">
+            <div class="section-header">
+                <div class="section-eyebrow mono">
+                    <span class="eyebrow-index">02</span>
                     <span data-i18n="stack.eyebrow">SYSTEM CAPABILITIES</span>
                 </div>
                 <h2 class="section-title" data-i18n="stack.title">Kompetensi DevOps &amp; Web Development</h2>
                 <p class="section-subtitle" data-i18n="stack.subtitle">
-                    Kombinasi engineering infrastruktur cloud, otomasi pipeline, serta pemahaman fundamental pengembangan web modern.
+                    Kombinasi engineering infrastruktur cloud, otomasi pipeline, serta pemahaman fundamental pengembangan web modern — dilengkapi level pengalaman yang jujur.
                 </p>
             </div>
 
@@ -293,7 +434,10 @@
                                 <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
                             </svg>
                         </span>
-                        <span class="mono stack-code">srv_cloud_infra</span>
+                        <div class="stack-head-meta">
+                            <span class="level-badge level-learning mono" data-i18n="level.learning">Sedang dipelajari</span>
+                            <span class="mono stack-code">srv_cloud_infra</span>
+                        </div>
                     </div>
                     <h3 class="stack-title" data-i18n="stack.c1Title">Cloud &amp; Infrastruktur</h3>
                     <p class="stack-desc" data-i18n="stack.c1Desc">
@@ -317,16 +461,19 @@
                                 <path d="M12 22V12"></path>
                             </svg>
                         </span>
-                        <span class="mono stack-code">srv_containers</span>
+                        <div class="stack-head-meta">
+                            <span class="level-badge level-learning mono" data-i18n="level.learning">Sedang dipelajari</span>
+                            <span class="mono stack-code">srv_containers</span>
+                        </div>
                     </div>
                     <h3 class="stack-title" data-i18n="stack.c2Title">Container &amp; Orkestrasi</h3>
                     <p class="stack-desc" data-i18n="stack.c2Desc">
                         Mengemas aplikasi agar konsisten di tiap environment dan mengelola deployment berbasis container.
                     </p>
                     <ul class="tag-list">
-                        <li class="tech-tag">Docker</li>
-                        <li class="tech-tag">Kubernetes</li>
-                        <li class="tech-tag">Containerization</li>
+                        <li class="tech-tag tech-tag-learning">Docker <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
+                        <li class="tech-tag tech-tag-learning">Kubernetes <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
+                        <li class="tech-tag tech-tag-learning">Containerization <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
                     </ul>
                 </article>
 
@@ -339,17 +486,20 @@
                                 <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z"></path>
                             </svg>
                         </span>
-                        <span class="mono stack-code">srv_cicd_iac</span>
+                        <div class="stack-head-meta">
+                            <span class="level-badge level-learning mono" data-i18n="level.learning">Sedang dipelajari</span>
+                            <span class="mono stack-code">srv_cicd_iac</span>
+                        </div>
                     </div>
                     <h3 class="stack-title" data-i18n="stack.c3Title">CI/CD &amp; Infrastructure as Code</h3>
                     <p class="stack-desc" data-i18n="stack.c3Desc">
                         Otomatisasi build, testing, provisioning server, dan deployment pipeline agar rilis lebih cepat dan repeatable.
                     </p>
                     <ul class="tag-list">
-                        <li class="tech-tag">GitHub Actions</li>
-                        <li class="tech-tag">Jenkins</li>
-                        <li class="tech-tag">Terraform</li>
-                        <li class="tech-tag">Ansible</li>
+                        <li class="tech-tag tech-tag-learning">GitHub Actions <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
+                        <li class="tech-tag tech-tag-learning">Jenkins <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
+                        <li class="tech-tag tech-tag-learning">Terraform <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
+                        <li class="tech-tag tech-tag-learning">Ansible <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
                     </ul>
                 </article>
 
@@ -362,17 +512,20 @@
                                 <path d="m19 9-5 5-4-4-3 3"></path>
                             </svg>
                         </span>
-                        <span class="mono stack-code">srv_observability</span>
+                        <div class="stack-head-meta">
+                            <span class="level-badge level-learning mono" data-i18n="level.learning">Sedang dipelajari</span>
+                            <span class="mono stack-code">srv_observability</span>
+                        </div>
                     </div>
                     <h3 class="stack-title" data-i18n="stack.c6Title">Monitoring &amp; Observability</h3>
                     <p class="stack-desc" data-i18n="stack.c6Desc">
                         Pengumpulan metrik sistem dan aplikasi secara real-time serta visualisasi dashboard untuk memantau performa dan kesehatan layanan.
                     </p>
                     <ul class="tag-list">
-                        <li class="tech-tag">Prometheus</li>
-                        <li class="tech-tag">Grafana</li>
-                        <li class="tech-tag">Metrics Monitoring</li>
-                        <li class="tech-tag">Dashboards</li>
+                        <li class="tech-tag tech-tag-learning">Prometheus <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
+                        <li class="tech-tag tech-tag-learning">Grafana <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
+                        <li class="tech-tag tech-tag-learning">Metrics Monitoring <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
+                        <li class="tech-tag tech-tag-learning">Dashboards <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
                     </ul>
                 </article>
 
@@ -387,17 +540,20 @@
                                 <line x1="6" y1="17" x2="6.01" y2="17"></line>
                             </svg>
                         </span>
-                        <span class="mono stack-code">srv_proxy_cache</span>
+                        <div class="stack-head-meta">
+                            <span class="level-badge level-learning mono" data-i18n="level.learning">Sedang dipelajari</span>
+                            <span class="mono stack-code">srv_proxy_cache</span>
+                        </div>
                     </div>
                     <h3 class="stack-title" data-i18n="stack.c7Title">Reverse Proxy &amp; Caching</h3>
                     <p class="stack-desc" data-i18n="stack.c7Desc">
                         Pengaturan routing lalu lintas layanan di depan aplikasi serta pemanfaatan in-memory caching untuk mempercepat respons sistem.
                     </p>
                     <ul class="tag-list">
-                        <li class="tech-tag">Reverse Proxy</li>
-                        <li class="tech-tag">Redis</li>
-                        <li class="tech-tag">Traffic Routing</li>
-                        <li class="tech-tag">In-Memory Cache</li>
+                        <li class="tech-tag tech-tag-learning">Reverse Proxy <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
+                        <li class="tech-tag tech-tag-learning">Redis <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
+                        <li class="tech-tag tech-tag-learning">Traffic Routing <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
+                        <li class="tech-tag tech-tag-learning">In-Memory Cache <span class="tag-learning-chip" data-i18n="stack.learningBadge">learning</span></li>
                     </ul>
                 </article>
 
@@ -410,7 +566,10 @@
                                 <line x1="12" y1="19" x2="20" y2="19"></line>
                             </svg>
                         </span>
-                        <span class="mono stack-code">srv_scripting</span>
+                        <div class="stack-head-meta">
+                            <span class="level-badge level-basic mono" data-i18n="level.basic">Dasar</span>
+                            <span class="mono stack-code">srv_scripting</span>
+                        </div>
                     </div>
                     <h3 class="stack-title" data-i18n="stack.c4Title">Scripting &amp; Data</h3>
                     <p class="stack-desc" data-i18n="stack.c4Desc">
@@ -424,20 +583,23 @@
                     </ul>
                 </article>
 
-                <!-- Card 5: Wide Card — Web Development Bridge -->
+                <!-- Card 7: Wide Card — Web Development Bridge (Fixed 2-column layout) -->
                 <article class="surface-card stack-card stack-card-wide">
+                    <div class="stack-card-head">
+                        <span class="stack-icon-box accent-cyan" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="18" height="14" x="3" y="4" rx="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="18" x2="12" y2="21"></line>
+                            </svg>
+                        </span>
+                        <div class="stack-head-meta">
+                            <span class="level-badge level-proven mono" data-i18n="level.proven">Dipakai di proyek</span>
+                            <span class="mono stack-code">srv_web_dev</span>
+                        </div>
+                    </div>
                     <div class="stack-wide-inner">
                         <div class="stack-wide-text">
-                            <div class="stack-card-head">
-                                <span class="stack-icon-box accent-cyan" aria-hidden="true">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect width="18" height="14" x="3" y="4" rx="2"></rect>
-                                        <line x1="8" y1="21" x2="16" y2="21"></line>
-                                        <line x1="12" y1="18" x2="12" y2="21"></line>
-                                    </svg>
-                                </span>
-                                <span class="mono stack-code">srv_web_dev</span>
-                            </div>
                             <h3 class="stack-title" data-i18n="stack.c5Title">Web Development &amp; Application Delivery</h3>
                             <p class="stack-desc" data-i18n="stack.c5Desc">
                                 Tidak hanya mengelola server dan pipeline — saya juga membangun antarmuka web modern dan memahami bagaimana aplikasi front-end maupun back-end berinteraksi dengan infrastruktur produksi.
@@ -455,11 +617,11 @@
             </div>
         </section>
 
-        <!-- EXPERIENCE TIMELINE SECTION -->
-        <section id="experience" class="section reveal-section">
+        <!-- SECTION 03: EXPERIENCE TIMELINE -->
+        <section id="experience" class="section">
             <div class="section-header">
                 <div class="section-eyebrow mono">
-                    <span class="eyebrow-index">02</span>
+                    <span class="eyebrow-index">03</span>
                     <span data-i18n="exp.eyebrow">GIT LOG --GRAPH</span>
                 </div>
                 <h2 class="section-title" data-i18n="exp.title">Pengalaman &amp; Pelatihan</h2>
@@ -468,12 +630,15 @@
                 </p>
             </div>
 
-            <div class="timeline-list">
+            <div class="timeline-list" id="experience-timeline">
+                <div class="timeline-track-bg" id="timeline-track-bg" aria-hidden="true">
+                    <div class="timeline-track-fill" id="timeline-track-fill"></div>
+                </div>
+
                 <!-- Entry 1 -->
                 <article class="timeline-item">
                     <div class="timeline-rail" aria-hidden="true">
-                        <span class="timeline-node node-active"></span>
-                        <span class="timeline-stem"></span>
+                        <span class="timeline-node"></span>
                     </div>
                     <div class="surface-card timeline-card">
                         <div class="timeline-meta mono">
@@ -536,61 +701,47 @@
             </div>
         </section>
 
-        <!-- PROJECTS & CERTIFICATIONS SECTION -->
-        <section id="projects" class="section reveal-section">
+        <!-- SECTION 04: PROJECTS (FILTERABLE GRID + ARCHITECTURE MODAL) -->
+        <section id="projects" class="section">
             <div class="section-header">
                 <div class="section-eyebrow mono">
-                    <span class="eyebrow-index">03</span>
-                    <span data-i18n="proj.eyebrow">DEPLOYMENTS &amp; CREDENTIALS</span>
+                    <span class="eyebrow-index">04</span>
+                    <span data-i18n="proj.eyebrow">DEPLOYMENTS &amp; LABS</span>
                 </div>
-                <h2 class="section-title" data-i18n="proj.title">Proyek Pilihan &amp; Sertifikasi</h2>
+                <h2 class="section-title" data-i18n="proj.title">Proyek &amp; Arsitektur</h2>
                 <p class="section-subtitle" data-i18n="proj.subtitle">
-                    Implementasi aplikasi web nyata yang mendukung transparansi operasional serta sertifikasi cloud terverifikasi.
+                    Pilih kategori atau klik kartu proyek untuk melihat diagram arsitektur, masalah yang diselesaikan, dan solusi teknis.
                 </p>
             </div>
 
-            <div class="showcase-grid">
-                <!-- Featured Web Project -->
-                <article class="surface-card project-card">
-                    <div class="card-top-meta">
-                        <span class="badge-pill badge-green mono">
-                            <span class="status-dot" aria-hidden="true"></span>
-                            DEPLOYMENT · LIVE CONCEPT
-                        </span>
-                        <span class="mono muted-code">v1.0</span>
-                    </div>
+            <div class="project-filters" id="project-filters" role="toolbar" aria-label="Filter proyek berdasarkan kategori">
+                <button type="button" class="filter-chip active" data-filter="all" aria-pressed="true" data-i18n="filter.all">Semua</button>
+                <button type="button" class="filter-chip" data-filter="Cloud" aria-pressed="false">Cloud</button>
+                <button type="button" class="filter-chip" data-filter="DevOps" aria-pressed="false">DevOps</button>
+                <button type="button" class="filter-chip" data-filter="CI/CD" aria-pressed="false">CI/CD</button>
+                <button type="button" class="filter-chip" data-filter="IaC" aria-pressed="false">IaC</button>
+                <button type="button" class="filter-chip" data-filter="Monitoring" aria-pressed="false">Monitoring</button>
+                <button type="button" class="filter-chip" data-filter="Web" aria-pressed="false">Web</button>
+            </div>
 
-                    <div class="project-preview-strip" aria-hidden="true">
-                        <div class="preview-bar">
-                            <span></span><span></span><span></span>
-                            <small class="mono">assajjad-infak.app</small>
-                        </div>
-                        <div class="preview-metrics">
-                            <div class="preview-stat">
-                                <span class="mono">MODULE</span>
-                                <strong>Pencatatan Infak</strong>
-                            </div>
-                            <div class="preview-stat">
-                                <span class="mono">PURPOSE</span>
-                                <strong>Transparansi Dana</strong>
-                            </div>
-                        </div>
-                    </div>
+            <div class="projects-grid" id="projects-grid" aria-live="polite"></div>
+        </section>
 
-                    <h3 class="showcase-title">Infak Management System</h3>
-                    <p class="showcase-desc" data-i18n="proj.infakDesc">
-                        Aplikasi web pencatatan dan manajemen infak untuk mendukung transparansi laporan keuangan serta operasional Masjid/Madrasah Assajjad.
-                    </p>
+        <!-- SECTION 05: CREDENTIALS (SEPARATE FROM PROJECTS) -->
+        <section id="credentials" class="section">
+            <div class="section-header">
+                <div class="section-eyebrow mono">
+                    <span class="eyebrow-index">05</span>
+                    <span data-i18n="cred.eyebrow">VERIFIED CREDENTIALS</span>
+                </div>
+                <h2 class="section-title" data-i18n="cred.title">Sertifikasi Resmi</h2>
+                <p class="section-subtitle" data-i18n="cred.subtitle">
+                    Kredensial cloud yang dapat diverifikasi langsung melalui portal resmi penerbit.
+                </p>
+            </div>
 
-                    <ul class="tag-list">
-                        <li class="tech-tag">Web App</li>
-                        <li class="tech-tag">Management System</li>
-                        <li class="tech-tag">Operational Transparency</li>
-                    </ul>
-                </article>
-
-                <!-- Verified AWS Certificate -->
-                <article id="certificate" class="surface-card cert-card">
+            <article id="certificate" class="surface-card cert-card cert-card-standalone">
+                <div class="cert-card-main">
                     <div class="card-top-meta">
                         <span class="badge-pill badge-amber mono">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -607,39 +758,6 @@
                         Sertifikasi resmi dari Amazon Web Services yang memvalidasi pemahaman fundamental arsitektur cloud, keamanan, layanan inti AWS, dan model operasional cloud.
                     </p>
 
-                    <dl class="cert-details mono">
-                        <div class="cert-row">
-                            <dt data-i18n="cert.holder">Pemegang</dt>
-                            <dd>Fawwaz Fr</dd>
-                        </div>
-                        <div class="cert-row">
-                            <dt data-i18n="cert.issued">Terbit</dt>
-                            <dd>4 Aug 2026</dd>
-                        </div>
-                        <div class="cert-row">
-                            <dt data-i18n="cert.expires">Berlaku s/d</dt>
-                            <dd>4 Aug 2029</dd>
-                        </div>
-                        <div class="cert-row cert-row-id">
-                            <dt data-i18n="cert.valId">Validation ID</dt>
-                            <dd class="val-id-wrap">
-                                <code id="aws-validation-id">7ebc4ecc7d044e519d00e1e18565bc2b</code>
-                                <button type="button" class="copy-btn" id="copy-cert-id" aria-label="Salin Validation ID AWS" title="Copy Validation ID">
-                                    <span class="icon-swap-grid" aria-hidden="true">
-                                        <svg class="icon-swap-layer copy-icon-default" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-                                            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
-                                        </svg>
-                                        <svg class="icon-swap-layer copy-icon-success" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                    </span>
-                                    <span class="copy-label mono" data-i18n="cert.copy">Salin</span>
-                                </button>
-                            </dd>
-                        </div>
-                    </dl>
-
                     <div class="cert-actions">
                         <a href="AWS%20Certified%20Cloud%20Practitioner%20certificate%20(1).pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-trailing-icon">
                             <span data-i18n="cert.viewPdf">Lihat Sertifikat (PDF)</span>
@@ -653,15 +771,51 @@
                             <span data-i18n="cert.verify">Verifikasi AWS</span>
                         </a>
                     </div>
-                </article>
-            </div>
+                </div>
+
+                <dl class="cert-details mono">
+                    <div class="cert-row">
+                        <dt data-i18n="cert.holder">Pemegang</dt>
+                        <dd class="cert-holder-value">
+                            <span>Fawwaz Fr</span>
+                            <small class="cert-holder-note" data-i18n="cert.holderNote">(nama sesuai sertifikat PDF)</small>
+                        </dd>
+                    </div>
+                    <div class="cert-row">
+                        <dt data-i18n="cert.issued">Terbit</dt>
+                        <dd>4 Aug 2026</dd>
+                    </div>
+                    <div class="cert-row">
+                        <dt data-i18n="cert.expires">Berlaku s/d</dt>
+                        <dd>4 Aug 2029</dd>
+                    </div>
+                    <div class="cert-row cert-row-id">
+                        <dt data-i18n="cert.valId">Validation ID</dt>
+                        <dd class="val-id-wrap">
+                            <code id="aws-validation-id">7ebc4ecc7d044e519d00e1e18565bc2b</code>
+                            <button type="button" class="copy-btn" id="copy-cert-id" aria-label="Salin Validation ID AWS" title="Copy Validation ID">
+                                <span class="icon-swap-grid" aria-hidden="true">
+                                    <svg class="icon-swap-layer copy-icon-default" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                                        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                                    </svg>
+                                    <svg class="icon-swap-layer copy-icon-success" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </span>
+                                <span class="copy-label mono" data-i18n="cert.copy">Salin</span>
+                            </button>
+                        </dd>
+                    </div>
+                </dl>
+            </article>
         </section>
 
-        <!-- CONTACT / CONNECT SECTION -->
-        <section id="contact" class="section reveal-section">
+        <!-- SECTION 06: CONTACT / CONNECT -->
+        <section id="contact" class="section">
             <div class="surface-card contact-banner">
                 <div class="contact-copy">
-                    <span class="mono eyebrow-inline" data-i18n="contact.eyebrow">04 / MARI TERHUBUNG</span>
+                    <span class="mono eyebrow-inline" data-i18n="contact.eyebrow">06 / MARI TERHUBUNG</span>
                     <h2 class="contact-title" data-i18n="contact.title">Terbuka untuk peluang DevOps, Cloud, &amp; Web Engineering.</h2>
                     <p class="contact-desc" data-i18n="contact.desc">
                         Ingin berdiskusi tentang otomasi infrastruktur, deployment container, atau proyek pengembangan web? Silakan hubungi saya melalui kanal berikut.
@@ -704,7 +858,7 @@
                         </svg>
                     </a>
 
-                    <a href="https://www.instagram.com/wwaz.py?igsi=MW9nbzcxbXBydm5wNw==" target="_blank" rel="noopener noreferrer" class="social-card">
+                    <a href="https://www.instagram.com/wwaz.py" target="_blank" rel="noopener noreferrer" class="social-card">
                         <span class="social-icon" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
@@ -725,6 +879,89 @@
             </div>
         </section>
     </main>
+
+    <!-- ACCESSIBLE PROJECT DETAIL MODAL -->
+    <div class="modal-backdrop" id="project-modal-backdrop" hidden></div>
+    <div
+        class="project-modal"
+        id="project-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-project-title"
+        aria-hidden="true"
+        hidden
+    >
+        <div class="modal-dialog surface-card">
+            <div class="modal-header">
+                <div class="modal-header-meta">
+                    <span id="modal-status-badge" class="badge-pill mono"></span>
+                    <span id="modal-todo-badge" class="badge-pill badge-todo mono" hidden>TODO</span>
+                </div>
+                <button type="button" class="icon-btn" id="modal-close-btn" aria-label="Tutup detail proyek">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body" id="modal-body">
+                <h2 class="modal-title" id="modal-project-title"></h2>
+                <p class="modal-summary" id="modal-project-summary"></p>
+
+                <div class="modal-two-col">
+                    <div class="modal-box">
+                        <h3 class="modal-box-label mono" data-i18n="modal.problem">Masalah yang Diselesaikan</h3>
+                        <p class="modal-box-text" id="modal-problem"></p>
+                    </div>
+                    <div class="modal-box">
+                        <h3 class="modal-box-label mono" data-i18n="modal.solution">Solusi</h3>
+                        <p class="modal-box-text" id="modal-solution"></p>
+                    </div>
+                </div>
+
+                <div class="modal-arch-section">
+                    <div class="modal-arch-head">
+                        <h3 class="modal-box-label mono" data-i18n="modal.architecture">Diagram Arsitektur</h3>
+                        <span class="arch-hint mono" data-i18n="modal.archHint">Hover / fokus komponen untuk detail</span>
+                    </div>
+                    <div class="arch-diagram-wrap">
+                        <div class="arch-svg-scroll" id="modal-arch-svg"></div>
+                        <div class="arch-tooltip mono" id="modal-arch-tooltip" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="modal-two-col">
+                    <div class="modal-box">
+                        <h3 class="modal-box-label mono" data-i18n="modal.stack">Tech Stack</h3>
+                        <ul class="tag-list" id="modal-tech-stack"></ul>
+                    </div>
+                    <div class="modal-box">
+                        <h3 class="modal-box-label mono" data-i18n="modal.impact">Hasil / Dampak</h3>
+                        <p class="modal-box-text" id="modal-impact"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a href="#" id="modal-repo-btn" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-leading-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                    </svg>
+                    <span id="modal-repo-label" data-i18n="modal.repo">Repository</span>
+                </a>
+                <a href="#" id="modal-demo-btn" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-trailing-icon">
+                    <span id="modal-demo-label" data-i18n="modal.demo">Live Demo</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-container mono">
